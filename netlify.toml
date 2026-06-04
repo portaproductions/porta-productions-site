@@ -1,0 +1,4 @@
+# Netlify build settings for portaproductions.com
+# Static site — no build step needed; publish the repo root.
+[build]
+  publish = "."
