@@ -237,6 +237,27 @@
   .strip-inner .it svg{width:18px;height:18px;color:var(--g1)}
   @keyframes scrollx{to{transform:translateX(-50%)}}
 
+  /* brokerage logo marquee */
+  .lstrip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2);padding:40px 0;overflow:hidden;position:relative;z-index:2}
+  .lstrip::before,.lstrip::after{content:"";position:absolute;top:0;bottom:0;width:130px;z-index:3;pointer-events:none}
+  .lstrip::before{left:0;background:linear-gradient(90deg,var(--ink-2),transparent)}
+  .lstrip::after{right:0;background:linear-gradient(270deg,var(--ink-2),transparent)}
+  .ltrack{display:flex;gap:70px;white-space:nowrap;width:max-content;align-items:center;animation:lscroll 60s linear infinite}
+  .lstrip:hover .ltrack{animation-play-state:paused}
+  @keyframes lscroll{to{transform:translateX(-50%)}}
+  .bk{display:flex;align-items:center;justify-content:center;height:46px;color:var(--platinum);opacity:.6;transition:opacity .4s,color .4s;flex:none}
+  .bk:hover{opacity:1;color:var(--white)}
+  .bk .w{font-family:var(--serif);font-weight:500;font-size:1.18rem;letter-spacing:.16em;text-transform:uppercase;line-height:1}
+  .bk .w.sans{font-family:var(--sans);font-weight:600;letter-spacing:.22em;font-size:1.02rem}
+  .bk .stack{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+  .bk .stack .sub{font-size:.5rem;letter-spacing:.34em;color:var(--g3);font-weight:400;font-family:var(--sans)}
+  .bk .stack .sub2{font-family:var(--serif);letter-spacing:.18em;color:var(--g3)}
+  .bk .remax{font-family:var(--sans);font-weight:700;font-size:1.34rem;letter-spacing:.02em;display:flex;align-items:center}
+  .bk .remax .sl{color:var(--g2);margin:0 1px;font-weight:300}
+  .bk .exp{font-family:var(--sans);font-size:1.3rem;letter-spacing:.02em;font-weight:300}
+  .bk .exp b{font-weight:700}
+  .bk .c21{font-family:var(--sans);font-weight:600;letter-spacing:.2em;font-size:1.04rem}
+
   .pad{padding:130px 0}
   .pad-sm{padding:90px 0}
   .grid-head{margin-bottom:64px;max-width:760px}
@@ -872,6 +893,54 @@
     </div>
     <div style="text-align:center;margin-top:44px" class="reveal">
       <a class="btn" href="https://www.google.com/search?q=Porta+Productions+real+estate+media+Dallas+reviews" target="_blank" rel="noopener">Read all reviews on Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- BROKERAGES -->
+<section class="pad-sm" id="brokerages">
+  <div class="wrap">
+    <div class="grid-head center reveal">
+      <span class="eyebrow">Trusted Across DFW</span>
+      <h2 class="section-title">Brokerages I've worked with</h2>
+      <p class="lead" style="margin:0 auto">From luxury listings to high-volume teams — production for agents across the metroplex's leading brokerages.</p>
+    </div>
+  </div>
+  <div class="lstrip reveal" aria-label="Brokerages we have worked with">
+    <div class="ltrack">
+      <div class="bk"><span class="w sans" style="font-weight:500;letter-spacing:.34em">COMPASS</span></div>
+      <div class="bk"><div class="stack"><span class="w">Ebby Halliday</span><span class="sub">REALTORS</span></div></div>
+      <div class="bk"><div class="stack"><span class="w" style="font-size:1.02rem">Allie Beth Allman</span><span class="sub">&amp; ASSOCIATES</span></div></div>
+      <div class="bk"><div class="stack"><span class="w" style="font-size:1.02rem">Briggs Freeman</span><span class="sub2" style="font-size:.6rem;letter-spacing:.18em">SOTHEBY'S INTERNATIONAL REALTY</span></div></div>
+      <div class="bk"><span class="remax">RE<span class="sl">/</span>MAX</span></div>
+      <div class="bk"><div class="stack"><span class="w sans" style="font-size:.9rem;letter-spacing:.24em">COLDWELL BANKER</span><span class="sub">REALTY</span></div></div>
+      <div class="bk"><div class="stack"><span class="w sans" style="font-size:.9rem;letter-spacing:.24em">COLDWELL BANKER</span><span class="sub">APEX</span></div></div>
+      <div class="bk"><span class="exp"><b>eXp</b> Realty</span></div>
+      <div class="bk"><div class="stack"><span class="w" style="font-size:.95rem">Berkshire Hathaway</span><span class="sub">HOMESERVICES · PENFED REALTY</span></div></div>
+      <div class="bk"><div class="stack"><span class="w" style="font-size:1.02rem">Rogers Healy</span><span class="sub">AND ASSOCIATES</span></div></div>
+      <div class="bk"><span class="w sans" style="font-size:1rem;letter-spacing:.3em">DOUGLAS ELLIMAN</span></div>
+      <div class="bk"><span class="w" style="font-size:1.02rem">Engel &amp; Völkers</span></div>
+      <div class="bk"><span class="c21">CENTURY 21</span></div>
+      <div class="bk"><span class="w sans" style="letter-spacing:.42em;font-weight:500">THE AGENCY</span></div>
+      <div class="bk"><div class="stack"><span class="w" style="font-size:1.02rem">Monument</span><span class="sub">REALTY</span></div></div>
+      <div class="bk"><div class="stack"><span class="w" style="font-size:1.02rem">Fathom</span><span class="sub">REALTY</span></div></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="bk" aria-hidden="true"><span class="w sans" style="font-weight:500;letter-spacing:.34em">COMPASS</span></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w">Ebby Halliday</span><span class="sub">REALTORS</span></div></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w" style="font-size:1.02rem">Allie Beth Allman</span><span class="sub">&amp; ASSOCIATES</span></div></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w" style="font-size:1.02rem">Briggs Freeman</span><span class="sub2" style="font-size:.6rem;letter-spacing:.18em">SOTHEBY'S INTERNATIONAL REALTY</span></div></div>
+      <div class="bk" aria-hidden="true"><span class="remax">RE<span class="sl">/</span>MAX</span></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w sans" style="font-size:.9rem;letter-spacing:.24em">COLDWELL BANKER</span><span class="sub">REALTY</span></div></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w sans" style="font-size:.9rem;letter-spacing:.24em">COLDWELL BANKER</span><span class="sub">APEX</span></div></div>
+      <div class="bk" aria-hidden="true"><span class="exp"><b>eXp</b> Realty</span></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w" style="font-size:.95rem">Berkshire Hathaway</span><span class="sub">HOMESERVICES · PENFED REALTY</span></div></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w" style="font-size:1.02rem">Rogers Healy</span><span class="sub">AND ASSOCIATES</span></div></div>
+      <div class="bk" aria-hidden="true"><span class="w sans" style="font-size:1rem;letter-spacing:.3em">DOUGLAS ELLIMAN</span></div>
+      <div class="bk" aria-hidden="true"><span class="w" style="font-size:1.02rem">Engel &amp; Völkers</span></div>
+      <div class="bk" aria-hidden="true"><span class="c21">CENTURY 21</span></div>
+      <div class="bk" aria-hidden="true"><span class="w sans" style="letter-spacing:.42em;font-weight:500">THE AGENCY</span></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w" style="font-size:1.02rem">Monument</span><span class="sub">REALTY</span></div></div>
+      <div class="bk" aria-hidden="true"><div class="stack"><span class="w" style="font-size:1.02rem">Fathom</span><span class="sub">REALTY</span></div></div>
     </div>
   </div>
 </section>
