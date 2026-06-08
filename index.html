@@ -245,10 +245,10 @@
   .lstrip::before,.lstrip::after{content:"";position:absolute;top:0;bottom:0;width:130px;z-index:3;pointer-events:none}
   .lstrip::before{left:0;background:linear-gradient(90deg,var(--ink-2),transparent)}
   .lstrip::after{right:0;background:linear-gradient(270deg,var(--ink-2),transparent)}
-  .ltrack{display:flex;gap:70px;align-items:center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;-webkit-overflow-scrolling:touch;padding:2px 0;touch-action:pan-x;overscroll-behavior-x:contain}
-  .ltrack::-webkit-scrollbar{display:none}
-  .ltrack.grabbing{cursor:grabbing}
-  .bk{display:flex;align-items:center;justify-content:center;height:46px;color:var(--platinum);opacity:.6;transition:opacity .4s,color .4s;flex:none;text-decoration:none;user-select:none;-webkit-user-select:none}
+  .ltrack{display:flex;gap:70px;align-items:center;width:max-content;animation:lscroll 42s linear infinite}
+  .lstrip:hover .ltrack{animation-play-state:paused}
+  @keyframes lscroll{to{transform:translateX(-50%)}}
+  .bk{display:flex;align-items:center;justify-content:center;height:46px;color:var(--platinum);opacity:.6;transition:opacity .4s,color .4s;flex:none;text-decoration:none}
   .bk:hover{opacity:1;color:var(--white)}
   .bk:focus-visible{opacity:1;color:var(--white);outline:1px solid var(--line-2);outline-offset:6px;border-radius:3px}
   .bk .w{font-family:var(--serif);font-weight:500;font-size:1.18rem;letter-spacing:.16em;text-transform:uppercase;line-height:1}
@@ -554,7 +554,7 @@
     .microtrust{gap:14px 20px}
     .pad{padding:64px 0}
   }
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.strip-inner{animation:scrollx 30s linear infinite!important}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.strip-inner{animation:scrollx 30s linear infinite!important}.ltrack{animation:lscroll 42s linear infinite!important}}
 </style>
 </head>
 <body>
@@ -1193,61 +1193,6 @@
     else if(a.textContent.toLowerCase().indexOf('schedule')>-1||a.textContent.toLowerCase().indexOf('book a shoot')>-1){gtag('event','book_click',{label:a.textContent.trim().slice(0,40)});}
   });
 
-  // brokerage marquee: auto-scroll + drag/swipe + click-through (works with Reduce Motion)
-  (function(){
-    var track=document.getElementById('bkTrack');
-    if(!track) return;
-    var paused=false, resumeAt=0, isDown=false, startX=0, startScroll=0, moved=false;
-    var SPEED=1.1;        // px per frame
-    var pos=0;            // float accumulator (scrollLeft itself rounds to int, so we track our own)
-    function half(){ return track.scrollWidth/2 || 1; }
-    function sync(){ pos=track.scrollLeft; }
-    function tick(){
-      if(!paused && !isDown && Date.now()>resumeAt){
-        var h=half();
-        pos=track.scrollLeft+SPEED;   // read live position so iOS momentum / manual scroll is never yanked back
-        if(pos>=h) pos-=h;
-        track.scrollLeft=pos;
-      }
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-    // pause on hover (desktop)
-    track.addEventListener('mouseenter',function(){paused=true;});
-    track.addEventListener('mouseleave',function(){paused=false;});
-    // touch: let native scroll handle it, pause auto briefly then resume
-    track.addEventListener('touchstart',function(){paused=true;},{passive:true});
-    track.addEventListener('touchend',function(){sync();resumeAt=Date.now()+1800;paused=false;},{passive:true});
-    // mouse drag to scroll
-    track.addEventListener('pointerdown',function(e){
-      if(e.pointerType!=='mouse') return; // touch uses native scroll
-      isDown=true; moved=false; startX=e.clientX; startScroll=track.scrollLeft;
-      track.classList.add('grabbing');
-    });
-    window.addEventListener('pointermove',function(e){
-      if(!isDown) return;
-      var dx=e.clientX-startX;
-      if(Math.abs(dx)>5) moved=true;
-      var v=startScroll-dx; var h=half();
-      if(v>=h) v-=h; else if(v<0) v+=h;
-      track.scrollLeft=v;
-    });
-    window.addEventListener('pointerup',function(){
-      if(!isDown) return;
-      isDown=false; track.classList.remove('grabbing'); sync(); resumeAt=Date.now()+1200;
-    });
-    // don't follow link if it was a drag
-    track.querySelectorAll('a.bk').forEach(function(a){
-      a.addEventListener('click',function(e){ if(moved){ e.preventDefault(); } });
-      a.addEventListener('dragstart',function(e){ e.preventDefault(); });
-    });
-    // resync float accumulator after manual wheel/trackpad scrolling settles
-    var st; track.addEventListener('scroll',function(){
-      if(isDown) return;
-      var h=half(); if(track.scrollLeft>=2*h){ track.scrollLeft-=h; }
-      clearTimeout(st); st=setTimeout(sync,120);
-    },{passive:true});
-  })();
 </script>
 </body>
 </html>
