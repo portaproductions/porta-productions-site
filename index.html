@@ -245,7 +245,7 @@
   .lstrip::before,.lstrip::after{content:"";position:absolute;top:0;bottom:0;width:130px;z-index:3;pointer-events:none}
   .lstrip::before{left:0;background:linear-gradient(90deg,var(--ink-2),transparent)}
   .lstrip::after{right:0;background:linear-gradient(270deg,var(--ink-2),transparent)}
-  .ltrack{display:flex;gap:70px;align-items:center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;-webkit-overflow-scrolling:touch;padding:2px 0}
+  .ltrack{display:flex;gap:70px;align-items:center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;-webkit-overflow-scrolling:touch;padding:2px 0;touch-action:pan-x;overscroll-behavior-x:contain}
   .ltrack::-webkit-scrollbar{display:none}
   .ltrack.grabbing{cursor:grabbing}
   .bk{display:flex;align-items:center;justify-content:center;height:46px;color:var(--platinum);opacity:.6;transition:opacity .4s,color .4s;flex:none;text-decoration:none;user-select:none;-webkit-user-select:none}
@@ -1204,9 +1204,10 @@
     function sync(){ pos=track.scrollLeft; }
     function tick(){
       if(!paused && !isDown && Date.now()>resumeAt){
-        pos+=SPEED;
-        if(pos>=half()) pos-=half();
-        track.scrollLeft=pos;   // assign from float each frame so sub-pixel progress accumulates
+        var h=half();
+        pos=track.scrollLeft+SPEED;   // read live position so iOS momentum / manual scroll is never yanked back
+        if(pos>=h) pos-=h;
+        track.scrollLeft=pos;
       }
       requestAnimationFrame(tick);
     }
