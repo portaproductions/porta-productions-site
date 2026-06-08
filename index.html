@@ -1198,17 +1198,15 @@
     var track=document.getElementById('bkTrack');
     if(!track) return;
     var paused=false, resumeAt=0, isDown=false, startX=0, startScroll=0, moved=false;
-    var SPEED=0.4; // px per frame
-    function half(){ return track.scrollWidth/2; }
-    function wrap(){
-      var h=half();
-      if(track.scrollLeft >= h){ track.scrollLeft -= h; }
-      else if(track.scrollLeft < 0){ track.scrollLeft += h; }
-    }
+    var SPEED=0.6;        // px per frame
+    var pos=0;            // float accumulator (scrollLeft itself rounds to int, so we track our own)
+    function half(){ return track.scrollWidth/2 || 1; }
+    function sync(){ pos=track.scrollLeft; }
     function tick(){
       if(!paused && !isDown && Date.now()>resumeAt){
-        track.scrollLeft += SPEED;
-        wrap();
+        pos+=SPEED;
+        if(pos>=half()) pos-=half();
+        track.scrollLeft=pos;   // assign from float each frame so sub-pixel progress accumulates
       }
       requestAnimationFrame(tick);
     }
@@ -1216,9 +1214,9 @@
     // pause on hover (desktop)
     track.addEventListener('mouseenter',function(){paused=true;});
     track.addEventListener('mouseleave',function(){paused=false;});
-    // touch: let native scroll handle it, pause auto briefly
+    // touch: let native scroll handle it, pause auto briefly then resume
     track.addEventListener('touchstart',function(){paused=true;},{passive:true});
-    track.addEventListener('touchend',function(){resumeAt=Date.now()+1800;paused=false;},{passive:true});
+    track.addEventListener('touchend',function(){sync();resumeAt=Date.now()+1800;paused=false;},{passive:true});
     // mouse drag to scroll
     track.addEventListener('pointerdown',function(e){
       if(e.pointerType!=='mouse') return; // touch uses native scroll
@@ -1229,19 +1227,25 @@
       if(!isDown) return;
       var dx=e.clientX-startX;
       if(Math.abs(dx)>5) moved=true;
-      track.scrollLeft=startScroll-dx; wrap();
+      var v=startScroll-dx; var h=half();
+      if(v>=h) v-=h; else if(v<0) v+=h;
+      track.scrollLeft=v;
     });
     window.addEventListener('pointerup',function(){
       if(!isDown) return;
-      isDown=false; track.classList.remove('grabbing'); resumeAt=Date.now()+1200;
+      isDown=false; track.classList.remove('grabbing'); sync(); resumeAt=Date.now()+1200;
     });
     // don't follow link if it was a drag
     track.querySelectorAll('a.bk').forEach(function(a){
       a.addEventListener('click',function(e){ if(moved){ e.preventDefault(); } });
       a.addEventListener('dragstart',function(e){ e.preventDefault(); });
     });
-    // keep infinite feel on manual wheel/scroll
-    track.addEventListener('scroll',function(){ if(!isDown) wrap(); },{passive:true});
+    // resync float accumulator after manual wheel/trackpad scrolling settles
+    var st; track.addEventListener('scroll',function(){
+      if(isDown) return;
+      var h=half(); if(track.scrollLeft>=2*h){ track.scrollLeft-=h; }
+      clearTimeout(st); st=setTimeout(sync,120);
+    },{passive:true});
   })();
 </script>
 </body>
