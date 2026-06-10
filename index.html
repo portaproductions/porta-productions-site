@@ -245,9 +245,7 @@
   .lstrip::before,.lstrip::after{content:"";position:absolute;top:0;bottom:0;width:130px;z-index:3;pointer-events:none}
   .lstrip::before{left:0;background:linear-gradient(90deg,var(--ink-2),transparent)}
   .lstrip::after{right:0;background:linear-gradient(270deg,var(--ink-2),transparent)}
-  .ltrack{display:flex;gap:70px;align-items:center;width:max-content;animation:lscroll 42s linear infinite}
-  .lstrip:hover .ltrack{animation-play-state:paused}
-  @keyframes lscroll{to{transform:translateX(-50%)}}
+  .ltrack{display:flex;gap:70px;align-items:center;width:max-content;will-change:transform}
   .bk{display:flex;align-items:center;justify-content:center;height:46px;color:var(--platinum);opacity:.6;transition:opacity .4s,color .4s;flex:none;text-decoration:none}
   .bk:hover{opacity:1;color:var(--white)}
   .bk:focus-visible{opacity:1;color:var(--white);outline:1px solid var(--line-2);outline-offset:6px;border-radius:3px}
@@ -554,7 +552,7 @@
     .microtrust{gap:14px 20px}
     .pad{padding:64px 0}
   }
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.strip-inner{animation:scrollx 30s linear infinite!important}.ltrack{animation:lscroll 42s linear infinite!important}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.strip-inner{animation:scrollx 30s linear infinite!important}}
 </style>
 </head>
 <body>
@@ -1193,6 +1191,21 @@
     else if(a.textContent.toLowerCase().indexOf('schedule')>-1||a.textContent.toLowerCase().indexOf('book a shoot')>-1){gtag('event','book_click',{label:a.textContent.trim().slice(0,40)});}
   });
 
+  // brokerage marquee auto-scroll via Web Animations API
+  // (compositor-driven like CSS, reliable on iOS, and runs regardless of the Reduce Motion setting)
+  (function(){
+    var track=document.getElementById('bkTrack');
+    if(!track||!track.animate) return;
+    var anim=track.animate(
+      [{transform:'translateX(0)'},{transform:'translateX(-50%)'}],
+      {duration:42000,iterations:Infinity,easing:'linear'}
+    );
+    var strip=track.closest('.lstrip');
+    if(strip){
+      strip.addEventListener('mouseenter',function(){anim.pause();});
+      strip.addEventListener('mouseleave',function(){anim.play();});
+    }
+  })();
 </script>
 </body>
 </html>
