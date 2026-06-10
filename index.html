@@ -245,7 +245,9 @@
   .lstrip::before,.lstrip::after{content:"";position:absolute;top:0;bottom:0;width:130px;z-index:3;pointer-events:none}
   .lstrip::before{left:0;background:linear-gradient(90deg,var(--ink-2),transparent)}
   .lstrip::after{right:0;background:linear-gradient(270deg,var(--ink-2),transparent)}
-  .ltrack{display:flex;gap:70px;align-items:center;width:max-content;will-change:transform}
+  .ltrack{display:flex;gap:70px;align-items:center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;touch-action:pan-x;overscroll-behavior-x:contain;cursor:grab;padding:2px 0}
+  .ltrack::-webkit-scrollbar{display:none}
+  .ltrack.grabbing{cursor:grabbing}
   .bk{display:flex;align-items:center;justify-content:center;height:46px;color:var(--platinum);opacity:.6;transition:opacity .4s,color .4s;flex:none;text-decoration:none}
   .bk:hover{opacity:1;color:var(--white)}
   .bk:focus-visible{opacity:1;color:var(--white);outline:1px solid var(--line-2);outline-offset:6px;border-radius:3px}
@@ -1191,20 +1193,36 @@
     else if(a.textContent.toLowerCase().indexOf('schedule')>-1||a.textContent.toLowerCase().indexOf('book a shoot')>-1){gtag('event','book_click',{label:a.textContent.trim().slice(0,40)});}
   });
 
-  // brokerage marquee auto-scroll via Web Animations API
-  // (compositor-driven like CSS, reliable on iOS, and runs regardless of the Reduce Motion setting)
+  // brokerage marquee: continuous auto-scroll + user can swipe/drag (auto pauses while you interact)
+  // uses a float accumulator (scrollLeft rounds to int, which would otherwise freeze a slow auto-scroll),
+  // and resyncs to the live position after any interaction so momentum is never yanked back.
   (function(){
-    var track=document.getElementById('bkTrack');
-    if(!track||!track.animate) return;
-    var anim=track.animate(
-      [{transform:'translateX(0)'},{transform:'translateX(-50%)'}],
-      {duration:42000,iterations:Infinity,easing:'linear'}
-    );
-    var strip=track.closest('.lstrip');
-    if(strip){
-      strip.addEventListener('mouseenter',function(){anim.pause();});
-      strip.addEventListener('mouseleave',function(){anim.play();});
+    var track=document.getElementById('bkTrack'); if(!track) return;
+    var SPEED=1.0, pos=0, paused=false, resumeAt=0, isDown=false, startX=0, startScroll=0, moved=false, wasInactive=true;
+    function half(){ return track.scrollWidth/2 || 1; }
+    function tick(){
+      var active = !paused && !isDown && Date.now()>resumeAt;
+      if(active){
+        if(wasInactive){ pos=track.scrollLeft; wasInactive=false; }  // resync after any pause
+        pos+=SPEED; if(pos>=half()) pos-=half(); track.scrollLeft=pos;
+      } else { wasInactive=true; }
+      requestAnimationFrame(tick);
     }
+    requestAnimationFrame(tick);
+    // desktop hover pause
+    track.addEventListener('mouseenter',function(){paused=true;});
+    track.addEventListener('mouseleave',function(){paused=false;});
+    // touch: native momentum scroll; auto pauses, resumes shortly after
+    track.addEventListener('touchstart',function(){paused=true;},{passive:true});
+    track.addEventListener('touchend',function(){resumeAt=Date.now()+1500;paused=false;},{passive:true});
+    // mouse drag-to-scroll
+    track.addEventListener('pointerdown',function(e){ if(e.pointerType!=='mouse') return; isDown=true;moved=false;startX=e.clientX;startScroll=track.scrollLeft;track.classList.add('grabbing'); });
+    window.addEventListener('pointermove',function(e){ if(!isDown) return; var dx=e.clientX-startX; if(Math.abs(dx)>5) moved=true; track.scrollLeft=startScroll-dx; });
+    window.addEventListener('pointerup',function(){ if(!isDown) return; isDown=false;track.classList.remove('grabbing');resumeAt=Date.now()+1200; });
+    // wheel/trackpad: pause while the user scrolls, resume after it settles
+    var wt; track.addEventListener('scroll',function(){ if(isDown) return; if(Math.abs(track.scrollLeft-pos)>4){ paused=true; clearTimeout(wt); wt=setTimeout(function(){paused=false;},800);} },{passive:true});
+    // don't follow a link if it was a drag, not a tap
+    track.querySelectorAll('a.bk').forEach(function(a){ a.addEventListener('click',function(e){ if(moved) e.preventDefault(); }); a.addEventListener('dragstart',function(e){ e.preventDefault(); }); });
   })();
 </script>
 </body>
