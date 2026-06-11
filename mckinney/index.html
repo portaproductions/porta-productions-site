@@ -1,78 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FR7EHQE53F"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FR7EHQE53F');</script>
-<title>Real Estate Video & Photography in McKinney, TX | Porta Productions</title>
-<meta name="description" content="Cinematic real estate videography, HDR photography, and aerial media for McKinney listings and agents. 24–72 hour delivery. Book with Porta Productions.">
+<title>Real Estate Media in McKinney | Porta Productions</title>
+<meta name="description" content="Cinematic real estate &amp; brand media in McKinney, TX — listing films, HDR &amp; aerial photography, reels and 3D tours. 24–72 hour delivery from Porta Productions.">
+<meta name="theme-color" content="#121A25">
 <link rel="canonical" href="https://portaproductions.com/mckinney/">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="geo.region" content="US-TX">
-<meta name="geo.placename" content="McKinney">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Real Estate Video & Photography in McKinney, TX | Porta Productions">
-<meta property="og:description" content="Cinematic real estate videography, HDR photography, and aerial media for McKinney listings and agents. 24–72 hour delivery. Book with Porta Productions.">
-<meta property="og:url" content="https://portaproductions.com/mckinney/">
-<meta property="og:image" content="https://portaproductions.com/assets/og-image.jpg">
-<meta name="theme-color" content="#0e141c">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/landing.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Real Estate Media in McKinney, TX","serviceType":"Real estate videography and photography","provider":{"@type":"ProfessionalService","name":"Porta Productions","url":"https://portaproductions.com/","telephone":"","email":"ariel@porta.productions"},"areaServed":{"@type":"City","name":"McKinney, Texas"},"url":"https://portaproductions.com/mckinney/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://portaproductions.com/"},{"@type":"ListItem","position":2,"name":"McKinney","item":"https://portaproductions.com/mckinney/"}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#121A25;--navy-2:#0E141C;--navy-3:#090D13;
+    --steel:#414851;--silver:#71767C;--platinum:#A0A3A8;
+    --paper:#F5F6F7;--paper-2:#E7E9EC;--accent:#9AA0A7;--hi:#C8CDD3;
+    --line:rgba(244,240,233,.13);--line-d:rgba(27,26,23,.12);
+    --caps:"Cinzel",serif;--serif:"Cormorant Garamond",serif;--sans:"Lato",sans-serif;
+    --pad:clamp(22px,7vw,120px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy);color:var(--paper);font-family:var(--sans);font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  section{padding:clamp(70px,9vw,130px) var(--pad);position:relative;}
+  .paper{background:var(--paper);color:var(--navy);--steel:#333A44;--silver:#566069;--platinum:#566069;}
+  .darker{background:linear-gradient(180deg,var(--navy-2),var(--navy-3));}
+
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:.004em;}
+  h1{font-size:clamp(46px,7vw,98px);}
+  h2{font-size:clamp(34px,4.9vw,66px);}
+  h3{font-size:clamp(21px,1.95vw,26px);font-weight:500;}
+  .kicker{font-family:var(--sans);font-weight:300;letter-spacing:.42em;text-transform:uppercase;font-size:12.5px;color:var(--accent);}
+  .paper .kicker{color:var(--steel);}
+  p{font-size:clamp(15.5px,1.2vw,18px);color:#C9CBCE;max-width:60ch;}
+  .paper p{color:var(--steel);}
+  em{font-style:italic;color:var(--hi);}.paper em{color:var(--steel);}
+  .rule{width:62px;height:1px;background:var(--accent);margin:22px 0;}
+  .paper .rule{background:var(--steel);}
+  .sec-head{max-width:760px;margin-bottom:48px;}
+  .sec-head h2{margin-top:14px;}
+  .sec-head p{margin-top:16px;}
+
+  /* nav */
+  header{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;
+    padding:18px var(--pad);transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent;}
+  header.scrolled{background:rgba(14,20,28,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px var(--pad);}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand .wm{font-family:var(--caps);font-weight:500;letter-spacing:.3em;font-size:16px;color:#fff;display:inline-flex;flex-direction:column;line-height:1;}
+  .brand .subwm{font-family:var(--sans);font-weight:300;letter-spacing:.34em;text-transform:uppercase;font-size:6.5px;color:var(--platinum);margin-top:3px;font-style:normal;}
+  nav.links{display:flex;align-items:center;gap:26px;}
+  nav.links a{font-family:var(--sans);font-weight:300;letter-spacing:.16em;text-transform:uppercase;font-size:12.5px;color:var(--platinum);transition:color .3s;}
+  nav.links a:hover{color:#fff;}
+  .btn{font-family:var(--sans);font-weight:400;letter-spacing:.18em;text-transform:uppercase;font-size:12px;padding:12px 24px;border:1px solid var(--accent);color:#fff;transition:.3s;cursor:pointer;display:inline-block;background:none;}
+  .btn:hover{background:var(--accent);color:var(--navy);}
+  .btn.solid{background:var(--paper);color:var(--navy);border-color:var(--paper);}
+  .btn.solid:hover{background:var(--hi);border-color:var(--hi);}
+  .navbtn{padding:10px 20px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px;}
+  .burger span{width:24px;height:1.5px;background:#fff;display:block;}
+  @media(max-width:1080px){
+    nav.links{position:fixed;inset:0;background:rgba(9,13,19,.97);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .45s cubic-bezier(.6,0,.2,1);}
+    nav.links.open{transform:none;}
+    nav.links a{font-size:15px;}
+    .burger{display:flex;z-index:81;}
+  }
+
+  /* hero */
+  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;overflow:hidden;}
+  #hero video,#hero .herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+  #hero .herobg{background:radial-gradient(120% 100% at 60% 20%,#1C2737,var(--navy) 55%,var(--navy-3));z-index:-2;}
+  #hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,13,19,.55),rgba(9,13,19,.78));z-index:-1;}
+  #hero .badge{font-size:12.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--platinum);margin-bottom:24px;}
+  #hero h1{max-width:16ch;}
+  #hero h1 em{color:var(--hi);}
+  #hero .sub{margin:26px 0 30px;font-size:clamp(17px,1.5vw,21px);color:#D9DBDE;max-width:52ch;}
+  #hero .cta{display:flex;gap:16px;flex-wrap:wrap;}
+  #hero .trust{display:flex;gap:28px;flex-wrap:wrap;margin-top:46px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);}
+  #hero .trust span{display:flex;align-items:center;gap:8px;}
+  #hero .trust span::before{content:"";width:5px;height:5px;background:var(--accent);border-radius:50%;}
+
+  /* services */
+  .svc-group{margin-bottom:40px;}
+  .svc-group .gl{font-family:var(--sans);font-weight:300;letter-spacing:.3em;text-transform:uppercase;font-size:11px;color:var(--accent);margin-bottom:18px;}
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .svc{background:var(--navy);padding:26px 22px;transition:background .35s;}
+  .svc:hover{background:#16202C;}
+  .svc h3{color:#fff;margin-bottom:8px;}
+  .svc p{font-size:14.5px;color:#AEB1B5;}
+  @media(max-width:980px){.svc-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+
+  /* video facades */
+  .films{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:860px){.films{grid-template-columns:1fr;}}
+  .reels{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:24px;}
+  @media(max-width:980px){.reels{grid-template-columns:repeat(2,1fr);}}
+  .ytlite{position:relative;cursor:pointer;background-size:cover;background-position:center;overflow:hidden;border:1px solid var(--line);transition:transform .5s,box-shadow .5s;background-color:#16202C;}
+  .ytlite:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);}
+  .ytlite.r169{aspect-ratio:16/9;}.ytlite.r916{aspect-ratio:9/16;}
+  .ytlite::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,20,.05),rgba(10,14,20,.6));transition:.4s;}
+  .ytlite:hover::after{background:linear-gradient(180deg,rgba(10,14,20,0),rgba(10,14,20,.5));}
+  .ytlite .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;z-index:2;transition:.4s;}
+  .ytlite:hover .play{background:rgba(255,255,255,.14);transform:translate(-50%,-50%) scale(1.08);}
+  .ytlite .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;z-index:2;}
+  .ytlite .cap .s{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--hi);margin-bottom:4px;}
+  .ytlite .cap .t{font-family:var(--serif);font-weight:500;font-size:21px;color:#fff;}
+  .ytlite iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;}
+
+  /* gallery */
+  .filterbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+  .filterbar button{background:none;border:1px solid var(--line);color:var(--platinum);padding:10px 20px;font-family:var(--sans);font-weight:300;letter-spacing:.18em;text-transform:uppercase;font-size:11.5px;cursor:pointer;transition:.3s;}
+  .filterbar button.active,.filterbar button:hover{border-color:var(--accent);color:#fff;background:rgba(154,160,167,.1);}
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:980px){.gal{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.gal{grid-template-columns:1fr;}}
+  .tile{position:relative;aspect-ratio:4/3;overflow:hidden;background:#16202C;border:1px solid var(--line);}
+  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .6s;opacity:0;}
+  .tile img.loaded{opacity:1;}
+  .tile:hover img{transform:scale(1.07);}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,20,.02),rgba(10,14,20,.62));pointer-events:none;}
+  .tile .meta{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;z-index:2;}
+  .tile .meta .c{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--hi);margin-bottom:3px;}
+  .tile .meta .n{font-family:var(--serif);font-weight:500;font-size:18px;color:#fff;line-height:1.2;}
+  .tile.hide{display:none;}
+  .tile.feat{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
+  @media(max-width:520px){.tile.feat{grid-column:span 1;grid-row:span 1;aspect-ratio:4/3;}}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr;}}
+  .step{padding:26px 22px 30px;border-top:1px solid var(--line-d);}
+  .step .no{font-family:var(--caps);font-size:13px;color:var(--accent);}
+  .step h3{color:var(--navy);margin:8px 0;}
+  .step p{font-size:14.5px;color:var(--steel);}
+  .step .tag{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--silver);margin-top:12px;}
+
+  /* why */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:860px){.why-grid{grid-template-columns:1fr;}}
+  .why{background:var(--navy-2);padding:30px 26px;}
+  .why h3{color:#fff;margin-bottom:8px;}
+  .why p{font-size:14.5px;color:#AEB1B5;}
+
+  /* about + stats */
+  .about-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+  @media(max-width:900px){.about-wrap{grid-template-columns:1fr;gap:36px;}}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-d);border:1px solid var(--line-d);}
+  .stat{background:var(--paper);padding:28px 24px;}
+  .stat .num{font-family:var(--serif);font-size:clamp(34px,4vw,52px);color:var(--navy);line-height:1;}
+  .stat .lab{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--silver);margin-top:8px;}
+
+  /* reviews */
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:860px){.rev-grid{grid-template-columns:1fr;}}
+  .quote{border-left:2px solid var(--accent);padding-left:20px;}
+  .quote p{font-family:var(--serif);font-size:19.5px;font-style:italic;color:#E4E0D8;line-height:1.5;}
+  .quote .by{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);margin-top:12px;}
+
+  /* marquee */
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .track{display:flex;gap:56px;width:max-content;animation:scrollx 40s linear infinite;}
+  .track span{font-family:var(--caps);letter-spacing:.13em;font-size:16px;color:var(--platinum);white-space:nowrap;}
+  @keyframes scrollx{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* faq */
+  .faq{max-width:840px;}
+  .qa{border-bottom:1px solid var(--line-d);}
+  .qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:20px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--serif);font-size:19px;color:var(--navy);}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+  .qa .ans p{padding-bottom:20px;font-size:14px;}
+  .qa .pm{font-family:var(--sans);font-weight:300;color:var(--accent);font-size:22px;transition:transform .3s;}
+  .qa.open .pm{transform:rotate(45deg);}
+
+  /* areas */
+  .areas{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;}
+  .areas a{border:1px solid var(--line);padding:11px 22px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--platinum);transition:.3s;}
+  .areas a:hover{border-color:var(--accent);color:#fff;}
+
+  /* contact */
+  .contact-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start;}
+  @media(max-width:900px){.contact-wrap{grid-template-columns:1fr;gap:40px;}}
+  .contact-info .line{display:flex;flex-direction:column;gap:3px;margin-bottom:22px;}
+  .contact-info .l{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);}
+  .contact-info .v{font-family:var(--serif);font-size:21px;color:#fff;}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  form .full{grid-column:1/-1;}
+  form input,form select,form textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);color:#fff;padding:13px 14px;font-family:var(--sans);font-weight:300;font-size:14px;}
+  form input::placeholder,form textarea::placeholder{color:var(--silver);}
+  form select{color:var(--platinum);}
+  form textarea{min-height:110px;resize:vertical;}
+  form .full .btn{width:auto;}
+
+  /* footer */
+  footer{background:var(--navy-3);padding:64px var(--pad) 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;border-bottom:1px solid var(--line);padding-bottom:40px;}
+  @media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;gap:30px;}}
+  .foot-grid h5{font-family:var(--sans);font-weight:300;letter-spacing:.24em;text-transform:uppercase;font-size:10px;color:var(--accent);margin-bottom:16px;}
+  .foot-grid a{display:block;font-size:13px;color:var(--platinum);margin-bottom:9px;transition:.3s;}
+  .foot-grid a:hover{color:#fff;}
+  .foot-grid .blurb{font-size:13px;color:var(--silver);max-width:34ch;margin-top:14px;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:11px;letter-spacing:.1em;color:var(--silver);flex-wrap:wrap;gap:12px;}
+
+  /* logo wall */
+  .logowall{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line-d);border:1px solid var(--line-d);max-width:1120px;margin:0 auto;}
+  @media(max-width:900px){.logowall{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:520px){.logowall{grid-template-columns:repeat(2,1fr);}}
+  .lw{background:var(--paper);aspect-ratio:5/3;display:flex;align-items:center;justify-content:center;padding:16px;position:relative;}
+  .lw span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--caps);font-weight:500;font-size:13px;letter-spacing:.05em;color:#3F4853;padding:0 12px;line-height:1.25;transition:.3s;}
+  .lw:hover span{color:var(--navy);}
+  .lw img{max-height:40px;max-width:78%;object-fit:contain;filter:grayscale(1) brightness(.35);opacity:.82;transition:.35s;}
+  .lw:hover img{filter:grayscale(1) brightness(.12);opacity:1;}
+  /* instagram */
+  .ig{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
+  @media(max-width:900px){.ig{grid-template-columns:repeat(3,1fr);}}
+  .igt{aspect-ratio:1;overflow:hidden;position:relative;border:1px solid var(--line);display:block;background:#16202C;}
+  .igt img{width:100%;height:100%;object-fit:cover;transition:transform .6s,opacity .4s;opacity:.9;}
+  .igt:hover img{transform:scale(1.07);opacity:1;}
+  .igt .ico{position:absolute;top:10px;right:10px;width:18px;height:18px;border:1.5px solid rgba(255,255,255,.7);border-radius:5px;z-index:2;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .d1{transition-delay:.07s;}.d2{transition-delay:.15s;}.d3{transition-delay:.23s;}.d4{transition-delay:.31s;}.d5{transition-delay:.39s;}.d6{transition-delay:.47s;}
+  .toplink{position:fixed;bottom:22px;right:22px;z-index:70;width:44px;height:44px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(14,20,28,.8);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:.4s;color:#fff;}
+  .toplink.show{opacity:1;pointer-events:auto;}
+</style>
 </head>
-<body>
-<header><div class="wrap nav">
-<a href="/" class="logo" aria-label="Porta Productions home"><img src="/assets/mark-white.png" alt="Porta Productions"><span><span class="top">PORTA</span><span class="bot">PRODUCTIONS</span></span></a>
-<a href="/#contact" class="btn solid sm">Book a Shoot</a>
-</div></header>
-<section class="hero"><div class="wrap">
-<span class="eyebrow">Real Estate &amp; Brand Media · McKinney, TX</span>
-<h1>Real Estate Video &amp;<br>Photography in McKinney</h1>
-<p class="lead" style="max-width:60ch;margin-top:18px">Cinematic listing films, editorial photography, and drone media for McKinney — from Stonebridge Ranch to the charm of the historic downtown square.</p>
-<div class="cta-row"><a href="/#contact" class="btn solid">Schedule a Shoot</a><a href="/#work" class="btn">View Our Work</a></div>
-<div class="micro"><span>FAA-Licensed Drone</span><span>4K Cinema Quality</span><span>24–72h Delivery</span><span>Fully Insured</span></div>
-</div></section>
+<body id="top">
+<header id="header">
+  <a class="brand" href="../index.html"><svg width="24" height="19" viewBox="219 116 62 50" fill="none"><path fill="#C8CDD3" d="M222.0 143.5 L225.6 146.1 L225.6 128.6 L259.6 128.6 C261.5 128.6 263.0 128.2 264.0 127.4 C265.0 126.5 265.6 125.4 265.6 124.1 C265.6 122.7 265.0 121.6 264.0 120.8 C263.0 120.0 261.5 119.6 259.6 119.6 L225.6 119.6 L222.0 124.1 Z"/><path fill="#8A9098" d="M272.7 134.7 C271.1 135.9 269.0 136.9 266.6 137.6 C264.2 138.3 261.5 138.7 258.4 138.7 L237.8 138.7 L237.8 154.7 L249.7 163.2 L277.3 143.5 L277.3 128.1 C277.1 128.8 276.9 129.5 276.5 130.1 C275.7 131.9 274.4 133.4 272.7 134.7 Z"/></svg><span class="wm">PORTA<i class="subwm">Productions</i></span></a>
+  <nav class="links" id="navlinks">
+    <a href="#gallery">Work</a><a href="#work">Films</a><a href="../index.html#services">Services</a>
+    <a href="../index.html#process">Process</a><a href="../index.html#about">About</a><a href="../index.html">Home</a>
+    <a class="btn navbtn" href="#contact">Book a Shoot</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
 
-<section class="sec"><div class="wrap">
-<h2>McKinney’s listings, shot cinematically</h2>
-<p>Consistently ranked among the best places to live in America, McKinney pairs small-town charm with rapid luxury growth. Master-planned communities like Stonebridge Ranch and Craig Ranch, distinctive neighborhoods like Tucker Hill and Adriatica Village, and the beloved historic downtown square each have a character worth capturing on camera.</p><p>Porta Productions brings cinematic listing films, editorial HDR photography, FAA-licensed aerial footage, and social reels to McKinney agents, builders, and brands. We lean into what makes a property feel like home here — the light, the streetscape, the lifestyle — not just the square footage.</p>
-</div></section>
+<section id="hero" style="min-height:88vh;">
+  <div class="herobg"></div>
+  <div class="reveal in">
+    <div class="badge">McKinney · Dallas–Fort Worth</div>
+    <h1>Cinematic real estate media in <em>McKinney</em>.</h1>
+    <p class="sub">McKinney blends historic charm with luxury new construction — and both photograph beautifully. We capture cinematic films, twilight stills, and drone work that tell each McKinney home's story.</p>
+    <div class="cta"><a class="btn solid" href="#contact">Book a Shoot</a><a class="btn" href="#gallery">View Our Work</a></div>
+    <div class="trust"><span>FAA-Licensed Drone</span><span>4K Cinema Quality</span><span>24–72h Delivery</span><span>Fully Insured</span></div>
+  </div>
+</section>
 
-<section class="sec"><div class="wrap">
-<span class="eyebrow">What We Offer</span>
-<h2>Full-service media for McKinney agents &amp; builders</h2>
-<div class="grid"><div class="card"><h3>Cinematic Listing Films</h3><p>Story-driven property tours with cinema cameras, gimbals, and color grading that make a home unforgettable.</p></div>
-<div class="card"><h3>HDR Listing Photography</h3><p>Bright, true-to-life interior and exterior photos that highlight every room and detail.</p></div>
-<div class="card"><h3>Aerial & Drone</h3><p>FAA-licensed aerial cinematography and stills that frame the property, the lot, and the neighborhood.</p></div>
-<div class="card"><h3>Social Reels</h3><p>Vertical, scroll-stopping reels built for Instagram, TikTok, and Facebook reach.</p></div>
-<div class="card"><h3>Twilight Photography</h3><p>Golden-hour and dusk imagery — warm interiors and dramatic skies that stop the scroll.</p></div>
-<div class="card"><h3>3D Tours & Floor Plans</h3><p>Immersive Matterport walkthroughs and clean floor plans buyers can explore from anywhere.</p></div></div>
-</div></section>
+<section>
+  <div class="sec-head reveal"><div class="kicker">What We Offer</div><h2>A full studio for McKinney listings.</h2><p>Cinematic listing films, editorial &amp; twilight photography, vertical reels, FAA-licensed aerials, 3D tours, floor plans, and virtual staging — everything a McKinney property needs to stand out.</p></div>
+  <div class="svc-grid">
+    <div class="svc"><h3>Cinematic Listing Films</h3><p>Story-driven property tours, color-graded to elevate any McKinney home.</p></div>
+    <div class="svc"><h3>HDR &amp; Twilight Photography</h3><p>Editorial, magazine-quality stills that make listings shine.</p></div>
+    <div class="svc"><h3>Aerial &amp; Drone</h3><p>FAA-licensed aerials that frame the property, lot, and neighborhood.</p></div>
+    <div class="svc"><h3>Reels &amp; 3D Tours</h3><p>Scroll-stopping social reels and immersive Matterport walkthroughs.</p></div>
+  </div>
+</section>
 
-<section class="sec"><div class="wrap two">
-<div><span class="eyebrow">Why It Matters</span><h2>Marketing that sells the home</h2><p>McKinney buyers are often choosing a community as much as a house. Aerial footage of tree-lined streets, lakes, and amenities sells the setting, while warm twilight photography and a cinematic film convey the lifestyle that draws families here. That sense of place is exactly what turns a casual scroll into a serious offer.</p></div>
-<div><span class="eyebrow">Neighborhoods We Serve</span><h2 style="font-size:1.4rem">Across McKinney</h2><p style="margin-bottom:6px">We serve McKinney and the northeast metroplex, including:</p><div class="chips"><span class="chip">Stonebridge Ranch</span><span class="chip">Tucker Hill</span><span class="chip">Adriatica Village</span><span class="chip">Craig Ranch</span><span class="chip">Historic Downtown</span><span class="chip">Eldorado</span><span class="chip">Mallard Lakes</span><span class="chip">Auburn Hills</span><span class="chip">Trinity Falls</span><span class="chip">Wynngate</span></div></div>
-</div></section>
+<section id="gallery" class="darker">
+  <div class="sec-head reveal"><div class="kicker">Selected Work</div><h2>Frames that sell.</h2><p>Recent productions — twilight, interiors, aerial, and exteriors across DFW.</p></div>
+  <div class="filterbar reveal d1">
+    <button class="active" data-filter="all">All</button><button data-filter="twilight">Twilight</button><button data-filter="exteriors">Exteriors</button><button data-filter="aerial">Aerial</button><button data-filter="interiors">Interiors</button>
+  </div>
+  <div class="gal reveal d1">
+    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-1.jpg" alt="1194 Courtland Dr · Frisco"><div class="meta"><div class="c">Luxury Listing · Twilight</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-2.jpg" alt="Dallas Skyline"><div class="meta"><div class="c">Aerial &amp; Drone</div><div class="n">Dallas Skyline</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-3.jpg" alt="7440 Sienna Ridge · Fort Worth"><div class="meta"><div class="c">Twilight</div><div class="n">7440 Sienna Ridge · Fort Worth</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-4.jpg" alt="Rocky Branch · Dallas"><div class="meta"><div class="c">Interiors &amp; Staging</div><div class="n">Rocky Branch · Dallas</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-5.jpg" alt="906 Greenbriar · Duncanville"><div class="meta"><div class="c">Pool &amp; Twilight</div><div class="n">906 Greenbriar · Duncanville</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-6.jpg" alt="1194 Courtland Dr · Frisco"><div class="meta"><div class="c">Media Room</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-7.jpg" alt="1194 Courtland Dr · Frisco"><div class="meta"><div class="c">Pool &amp; Exterior</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-8.jpg" alt="Frisco Residence"><div class="meta"><div class="c">Interiors</div><div class="n">Frisco Residence</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-9.jpg" alt="Sienna Ridge · Fort Worth"><div class="meta"><div class="c">Twilight</div><div class="n">Sienna Ridge · Fort Worth</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-10.jpg" alt="1105 Elmgrove · Keller"><div class="meta"><div class="c">Twilight</div><div class="n">1105 Elmgrove · Keller</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-11.jpg" alt="Fort Worth Residence"><div class="meta"><div class="c">Interiors</div><div class="n">Fort Worth Residence</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-12.jpg" alt="Yacht Club · Dallas"><div class="meta"><div class="c">Waterfront Twilight</div><div class="n">Yacht Club · Dallas</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-13.jpg" alt="Rocky Branch · Dallas"><div class="meta"><div class="c">Dining &amp; Staging</div><div class="n">Rocky Branch · Dallas</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-14.jpg" alt="1194 Courtland Dr · Frisco"><div class="meta"><div class="c">Spa Bath</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+  </div>
+</section>
 
-<section class="cta"><div class="wrap">
-<span class="eyebrow">Ready When You Are</span>
-<h2>Let’s make your McKinney listing unforgettable</h2>
-<p class="lead" style="max-width:54ch;margin:0 auto">Same-day reply, 24–72 hour delivery, and a director’s eye on every shoot.</p>
-<div class="cta-row"><a href="/#contact" class="btn solid">Schedule a Shoot</a><a href="mailto:ariel@porta.productions" class="btn">Email Us</a></div>
-</div></section>
+<section id="work">
+  <div class="sec-head reveal"><div class="kicker">Films &amp; Reels</div><h2>See it in motion.</h2><p>Cinematic films and scroll-stopping reels. Tap any frame to play.</p></div>
+  <div class="films"><div class="ytlite r169 reveal" data-id="dPvpCMJWE8A" style="background-image:url('https://i.ytimg.com/vi/dPvpCMJWE8A/maxresdefault.jpg');"><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div class="cap"><div class="s">Featured Film · Luxury Estate</div><div class="t">New Leaf Custom Home</div></div></div><div class="ytlite r169 reveal d2" data-id="-PvukHfp5Hk" style="background-image:url('https://i.ytimg.com/vi/-PvukHfp5Hk/maxresdefault.jpg');"><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div class="cap"><div class="s">Agent Brand Film</div><div class="t">Connie Segovia · Real Estate</div></div></div></div>
+  <div class="reels"><div class="ytlite r916 reveal" data-id="KijvNpvXkVo" style="background-image:url('https://i.ytimg.com/vi/KijvNpvXkVo/maxresdefault.jpg');"><div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div class="cap"><div class="s">Penthouse</div><div class="t" style="font-size:14px;">Angel Wright</div></div></div><div class="ytlite r916 reveal" data-id="yJ6qJhpGeGM" style="background-image:url('https://i.ytimg.com/vi/yJ6qJhpGeGM/maxresdefault.jpg');"><div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Connie Segovia</div></div></div><div class="ytlite r916 reveal" data-id="YLHh6l5yHaU" style="background-image:url('https://i.ytimg.com/vi/YLHh6l5yHaU/maxresdefault.jpg');"><div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Rockdale Residence</div></div></div></div>
+</section>
 
-<footer><div class="wrap">
-<a href="/" class="foot-logo">PORTA PRODUCTIONS</a>
-<div class="foot-links">
-<a href="/">Home</a><a href="/#services">Services</a><a href="/#work">Work</a><a href="/#film">Film</a><a href="/#reviews">Reviews</a><a href="/#contact">Contact</a>
-</div>
-<div class="foot-links" style="font-size:.8rem">Service areas: <a href="/dallas/">Dallas</a> <a href="/fort-worth/">Fort Worth</a> <a href="/frisco/">Frisco</a> <a href="/plano/">Plano</a></div>
-<div class="foot-bottom">© Porta Productions — Cinematic Real Estate &amp; Brand Media, Dallas–Fort Worth &amp; nationwide. <a href="mailto:ariel@porta.productions">ariel@porta.productions</a></div>
-</div></footer>
-</body>
-</html>
+<section class="paper">
+  <div class="sec-head reveal"><div class="kicker">Neighborhoods</div><h2>Serving McKinney's finest.</h2><p>Stonebridge Ranch · Adriatica · Tucker Hill · Craig Ranch · Historic Downtown — and everywhere in between.</p></div>
+  <div class="reveal d1" style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;">
+    <a class="btn" style="border-color:var(--steel);color:var(--navy);" href="#contact">Start a McKinney Project</a>
+    <span style="font-size:13px;color:var(--silver);">Same-day reply · 24–72h delivery</span>
+  </div>
+</section>
+
+<section class="darker" style="text-align:center;">
+  <div class="kicker reveal">Trusted Across DFW</div>
+  <h2 class="reveal d1" style="margin:14px auto 36px;max-width:18ch;">Brokerages I've worked with.</h2>
+  <div class="marquee reveal d2"><div class="track">
+    <span>COMPASS</span><span>BRIGGS FREEMAN SOTHEBY'S</span><span>ALLIE BETH ALLMAN</span><span>DOUGLAS ELLIMAN</span><span>ENGEL &amp; VÖLKERS</span><span>THE AGENCY</span><span>EBBY HALLIDAY</span><span>COLDWELL BANKER</span><span>RE/MAX</span><span>eXp REALTY</span><span>ROGERS HEALY</span><span>CENTURY 21</span>
+    <span>COMPASS</span><span>BRIGGS FREEMAN SOTHEBY'S</span><span>ALLIE BETH ALLMAN</span><span>DOUGLAS ELLIMAN</span><span>ENGEL &amp; VÖLKERS</span><span>THE AGENCY</span><span>EBBY HALLIDAY</span><span>COLDWELL BANKER</span><span>RE/MAX</span><span>eXp REALTY</span><span>ROGERS HEALY</span><span>CENTURY 21</span>
+  </div></div>
+</section>
+
+<section>
+  <div class="sec-head reveal"><div class="kicker">What Clients Say</div><h2>Trusted by people who sell.</h2></div>
+  <div class="rev-grid">
+    <div class="quote reveal"><p>“Ariel is fantastic! Wonderful communication, quick turnaround, and beautiful images my sellers love.”</p><div class="by">Hannah Petty · Realtor, DFW</div></div>
+    <div class="quote reveal d1"><p>“Working with Ariel is a real treat! He really listened to my vision. His work speaks for itself.”</p><div class="by">Chantile Evans · Dallas</div></div>
+    <div class="quote reveal d2"><p>“Best in the business — so glad to have him as my videographer.”</p><div class="by">Fernando Aguilera · Realtor, DFW</div></div>
+  </div>
+</section>
+
+<section id="areas" class="paper">
+  <div class="sec-head reveal"><div class="kicker">Also Serving</div><h2>Across the metroplex.</h2></div>
+  <div class="areas reveal d1"><a href="../dallas/">Dallas</a><a href="../fort-worth/">Fort Worth</a><a href="../frisco/">Frisco</a><a href="../plano/">Plano</a><a href="../index.html#areas" style="color:var(--steel);border-color:var(--line-d);">All Areas</a></div>
+</section>
+
+<section id="contact" class="darker" style="text-align:center;">
+  <svg width="74" height="58" class="reveal" viewBox="219 116 62 50" fill="none"><path fill="#C8CDD3" d="M222.0 143.5 L225.6 146.1 L225.6 128.6 L259.6 128.6 C261.5 128.6 263.0 128.2 264.0 127.4 C265.0 126.5 265.6 125.4 265.6 124.1 C265.6 122.7 265.0 121.6 264.0 120.8 C263.0 120.0 261.5 119.6 259.6 119.6 L225.6 119.6 L222.0 124.1 Z"/><path fill="#8A9098" d="M272.7 134.7 C271.1 135.9 269.0 136.9 266.6 137.6 C264.2 138.3 261.5 138.7 258.4 138.7 L237.8 138.7 L237.8 154.7 L249.7 163.2 L277.3 143.5 L277.3 128.1 C277.1 128.8 276.9 129.5 276.5 130.1 C275.7 131.9 274.4 133.4 272.7 134.7 Z"/></svg>
+  <div class="kicker reveal" style="text-align:center;margin-top:18px;">Get in Touch</div>
+  <h2 class="reveal d1" style="margin:14px auto 18px;max-width:18ch;">Let's make your next McKinney listing unforgettable.</h2>
+  <p class="reveal d2" style="margin:0 auto 28px;">Tell us about the property and we'll reply the same day — usually with a shoot date.</p>
+  <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a class="btn solid" href="mailto:ariel@porta.productions?subject=McKinney%20Project%20Inquiry">Book a Consultation</a>
+    <a class="btn" href="https://porta-productions-1.aryeo.com/order-forms/019e715f-4278-7005-ab7a-bc0196f6fa6b" target="_blank" rel="noopener">Order Online</a>
+  </div>
+  <div class="reveal d4" style="margin-top:26px;font-size:13px;letter-spacing:.06em;color:var(--platinum);line-height:2.2;">
+    <a href="mailto:ariel@porta.productions">ariel@porta.productions</a> · <a href="tel:+15104568707">(510) 456-8707</a><br>portaproductions.com · @portaproductions
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom" style="border:0;">
+    <span>© 2026 Porta Productions · Cinematic Real Estate Media — McKinney, TX</span>
+    <span style="display:flex;gap:20px;"><a href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/portaproductions" target="_blank" rel="noopener">Facebook</a><a href="../index.html">Home</a></span>
+  </div>
+</footer>
+<a class="toplink" id="toplink" href="#top">↑</a>
+<script>
+var burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
+burger.addEventListener('click',function(){navlinks.classList.toggle('open');});
+navlinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navlinks.classList.remove('open');});});
+var header=document.getElementById('header'),toplink=document.getElementById('toplink');
+window.addEventListener('scroll',function(){var y=window.scrollY;header.classList.toggle('scrolled',y>40);if(toplink)toplink.classList.toggle('show',y>700);});
+document.querySelectorAll('.ytlite').forEach(function(el){el.addEventListener('click',function(){if(el.dataset.loaded)return;el.dataset.loaded='1';var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+el.getAttribute('data-id')+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';f.allowFullscreen=true;el.querySelector('.play').style.display='none';var c=el.querySelector('.cap');if(c)c.style.display='none';el.appendChild(f);});});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+document.querySelectorAll('.filterbar button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.filterbar button').forEach(function(x){x.classList.remove('active');});b.classList.add('active');var f=b.getAttribute('data-filter');document.querySelectorAll('.gal .tile').forEach(function(t){t.classList.toggle('hide', f!=='all'&&t.getAttribute('data-cat')!==f);});});});
+</script>
+</body></html>
