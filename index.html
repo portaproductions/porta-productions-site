@@ -127,6 +127,7 @@
   .tile .meta .c{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--hi);margin-bottom:3px;}
   .tile .meta .n{font-family:var(--serif);font-weight:500;font-size:18px;color:#fff;line-height:1.2;}
   .tile.hide{display:none;}
+  .gal.collapsed .tile:nth-child(n+9){display:none;}
   .tile.feat{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
   @media(max-width:520px){.tile.feat{grid-column:span 1;grid-row:span 1;aspect-ratio:4/3;}}
 
@@ -220,7 +221,6 @@
   .igt{aspect-ratio:1;overflow:hidden;position:relative;border:1px solid var(--line);display:block;background:#16202C;}
   .igt img{width:100%;height:100%;object-fit:cover;transition:transform .6s,opacity .4s;opacity:.9;}
   .igt:hover img{transform:scale(1.07);opacity:1;}
-  .igt .ico{position:absolute;top:10px;right:10px;width:18px;height:18px;border:1.5px solid rgba(255,255,255,.7);border-radius:5px;z-index:2;}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
   .reveal.in{opacity:1;transform:none;}
   .d1{transition-delay:.07s;}.d2{transition-delay:.15s;}.d3{transition-delay:.23s;}.d4{transition-delay:.31s;}.d5{transition-delay:.39s;}.d6{transition-delay:.47s;}
@@ -308,7 +308,7 @@
     <button data-filter="aerial">Aerial</button>
     <button data-filter="interiors">Interiors</button>
   </div>
-  <div class="gal reveal d1">
+  <div class="gal reveal d1 collapsed">
     <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-1.jpg" alt="1194 Courtland Dr, Frisco — twilight"><div class="meta"><div class="c">Luxury Listing · Twilight</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
     <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-2.jpg" alt="Dallas skyline aerial"><div class="meta"><div class="c">Aerial &amp; Drone</div><div class="n">Dallas Skyline</div></div></a>
     <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-3.jpg" alt="7440 Sienna Ridge, Fort Worth — twilight"><div class="meta"><div class="c">Twilight</div><div class="n">7440 Sienna Ridge · Fort Worth</div></div></a>
@@ -336,7 +336,7 @@
     <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-41.jpg" alt="Living Room · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Living Room · DFW</div></div></a>
     <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-42.jpg" alt="Waterfront Patio · DFW"><div class="meta"><div class="c">Waterfront</div><div class="n">Waterfront Patio · DFW</div></div></a>
   </div>
-  <div class="reveal d2" style="margin-top:30px;"><a class="btn" href="#contact">Request the full portfolio →</a></div>
+  <div class="reveal d2" style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;"><button class="btn" id="galmore" type="button">View Full Gallery</button><a class="btn" href="#contact">Request the full portfolio →</a></div>
 </section>
 
 <!-- WORK / FILMS -->
@@ -447,14 +447,13 @@
 <!-- INSTAGRAM -->
 <section id="instagram">
   <div class="sec-head reveal" style="max-width:780px;"><div class="kicker">@portaproductions</div><h2>Fresh from the feed.</h2><p>New films, reels, and listings every week. Follow the work on Instagram.</p></div>
-  <div class="ig reveal d1">
-    <a class="igt" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener"><span class="ico"></span><img loading="lazy" src="https://i.ytimg.com/vi/KijvNpvXkVo/maxresdefault.jpg" alt="Porta Productions reel"></a>
-    <a class="igt" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener"><span class="ico"></span><img loading="lazy" src="https://i.ytimg.com/vi/XlsYGFRnmys/maxresdefault.jpg" alt="Porta Productions reel"></a>
-    <a class="igt" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener"><span class="ico"></span><img loading="lazy" src="https://i.ytimg.com/vi/yJ6qJhpGeGM/maxresdefault.jpg" alt="Porta Productions reel"></a>
-    <a class="igt" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener"><span class="ico"></span><img loading="lazy" src="https://i.ytimg.com/vi/YLHh6l5yHaU/maxresdefault.jpg" alt="Porta Productions reel"></a>
-    <a class="igt" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener"><span class="ico"></span><img loading="lazy" src="https://i.ytimg.com/vi/HXn2NpcnND0/maxresdefault.jpg" alt="Porta Productions reel"></a>
-    <a class="igt" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener"><span class="ico"></span><img loading="lazy" src="https://i.ytimg.com/vi/dPvpCMJWE8A/maxresdefault.jpg" alt="Porta Productions reel"></a>
+  <div id="ig-feed" class="reveal d1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;align-items:start;">
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZF_XorhOeg/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZDGEQrAyJl/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DY2APjShE8m/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXQfwiCjeUM/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
   </div>
+  <script async src="//www.instagram.com/embed.js"></script>
   <div class="reveal d2" style="margin-top:30px;"><a class="btn" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener">Follow on Instagram</a></div>
 </section>
 
@@ -560,10 +559,13 @@
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
   // gallery filter
+  function expandGallery(){var g=document.querySelector('.gal');if(g)g.classList.remove('collapsed');var gm=document.getElementById('galmore');if(gm)gm.style.display='none';}
+  var _gm=document.getElementById('galmore'); if(_gm) _gm.addEventListener('click',expandGallery);
   document.querySelectorAll('.filterbar button').forEach(function(b){
     b.addEventListener('click',function(){
       document.querySelectorAll('.filterbar button').forEach(function(x){x.classList.remove('active');});
       b.classList.add('active');
+      expandGallery();
       var f=b.getAttribute('data-filter');
       document.querySelectorAll('.gal .tile').forEach(function(t){
         t.classList.toggle('hide', f!=='all' && t.getAttribute('data-cat')!==f);
