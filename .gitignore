@@ -1,4 +1,7 @@
 
+# macOS
+.DS_Store
+
 # excluded from redesign deploy
 index-old.html
 assets/work-25.jpg
