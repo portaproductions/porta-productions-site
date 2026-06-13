@@ -96,6 +96,8 @@
   header{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;
     padding:18px var(--pad);transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent;}
   header.scrolled{background:rgba(14,20,28,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px var(--pad);}
+  /* while the mobile menu is open, drop the header's backdrop-filter so the full-screen menu anchors to the viewport, not the header */
+  body.menu-open header{backdrop-filter:none;-webkit-backdrop-filter:none;}
   .brand{display:flex;align-items:center;gap:11px;}
   .brand .wm{font-family:var(--caps);font-weight:500;letter-spacing:.3em;font-size:16px;color:#fff;display:inline-flex;flex-direction:column;line-height:1;}
   .brand .subwm{font-family:var(--sans);font-weight:300;letter-spacing:.34em;text-transform:uppercase;font-size:6.5px;color:var(--platinum);margin-top:3px;font-style:normal;}
@@ -582,8 +584,8 @@
 <script>
   // mobile menu
   var burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
-  burger.addEventListener('click',function(){navlinks.classList.toggle('open');});
-  navlinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navlinks.classList.remove('open');});});
+  burger.addEventListener('click',function(){var open=navlinks.classList.toggle('open');document.body.classList.toggle('menu-open',open);});
+  navlinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navlinks.classList.remove('open');document.body.classList.remove('menu-open');});});
 
   // sticky header + toplink
   var header=document.getElementById('header'),toplink=document.getElementById('toplink');
