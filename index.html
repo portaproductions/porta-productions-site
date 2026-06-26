@@ -121,7 +121,7 @@
   /* hero */
   #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;overflow:hidden;}
   #hero video,#hero .herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
-  #hero .herobg{background:radial-gradient(120% 100% at 60% 20%,#1C2737,var(--navy) 55%,var(--navy-3));z-index:-2;}
+  #hero .herobg{background:radial-gradient(120% 100% at 60% 20%,#1C2737,var(--navy) 55%,var(--navy-3));z-index:-3;}
   #hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,13,19,.55),rgba(9,13,19,.78));z-index:-1;}
   #hero .badge{font-size:12.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--platinum);margin-bottom:24px;}
   #hero h1{max-width:16ch;}
@@ -582,6 +582,9 @@
 <a class="toplink" id="toplink" href="#top">↑</a>
 
 <script>
+  // ensure hero video autoplays (muted autoplay can need a nudge)
+  (function(){var hv=document.querySelector('#hero video');if(!hv)return;hv.muted=true;function go(){var p=hv.play();if(p&&p.catch)p.catch(function(){});}go();document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});['touchstart','click'].forEach(function(e){document.addEventListener(e,go,{once:true,passive:true});});})();
+
   // mobile menu
   var burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
   burger.addEventListener('click',function(){var open=navlinks.classList.toggle('open');document.body.classList.toggle('menu-open',open);});
