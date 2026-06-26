@@ -303,8 +303,8 @@
 
 <!-- HERO -->
 <section id="hero">
-  <video autoplay muted loop playsinline poster="https://portaproductions.com/assets/hero-wall-poster.jpg">
-    <source src="https://portaproductions.com/assets/hero-wall.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline poster="https://portaproductions.com/assets/hero-wall-poster.jpg?v=2">
+    <source src="https://portaproductions.com/assets/hero-wall.mp4?v=2" type="video/mp4">
   </video>
   <div class="herobg"></div>
   <div class="reveal in">
@@ -589,7 +589,7 @@
   (function(){var hv=document.querySelector('#hero video');if(!hv)return;
     var B='https://portaproductions.com/assets/';
     if(window.matchMedia('(max-width:760px)').matches){ // phones: single vertical reel fills the screen
-      hv.poster=B+'hero-mobile-poster.jpg'; hv.src=B+'hero-mobile.mp4'; hv.load();
+      hv.poster=B+'hero-mobile-poster.jpg?v=2'; hv.src=B+'hero-mobile.mp4?v=2'; hv.load();
     }
     hv.muted=true;function go(){var p=hv.play();if(p&&p.catch)p.catch(function(){});}go();
     document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
