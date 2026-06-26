@@ -46,7 +46,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
-    "reviewCount": "10",
+    "reviewCount": "14",
     "bestRating": "5"
   },
   "sameAs": [
@@ -135,19 +135,21 @@
   #hero .trust span{display:flex;align-items:center;gap:8px;}
   #hero .trust span::before{content:"";width:5px;height:5px;background:var(--accent);border-radius:50%;}
 
-  /* services */
-  .svc-group{margin-bottom:40px;}
-  .svc-group .gl{font-family:var(--sans);font-weight:300;letter-spacing:.3em;text-transform:uppercase;font-size:11px;color:var(--accent);margin-bottom:18px;}
-  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .svc{background:var(--navy);padding:26px 22px;transition:background .35s;display:block;color:inherit;text-decoration:none;cursor:pointer;}
-  .svc:hover h3{color:var(--hi);}
-  .svc h3::after{content:" \2192";opacity:0;transition:.3s;color:var(--accent);}
-  .svc:hover h3::after{opacity:1;}
-  .svc:hover{background:#16202C;}
-  .svc h3{color:#fff;margin-bottom:8px;}
-  .svc p{font-size:14.5px;color:#AEB1B5;}
-  @media(max-width:980px){.svc-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+  /* services — cinematic category blocks */
+  .svc-feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px;}
+  .svc-feat{position:relative;min-height:540px;overflow:hidden;display:flex;align-items:flex-end;border:1px solid var(--line);text-decoration:none;color:inherit;}
+  .svc-feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6);transform:scale(1.02);transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .5s;z-index:0;}
+  .svc-feat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,13,19,.1) 0%,rgba(9,13,19,.48) 48%,rgba(9,13,19,.93) 100%);z-index:1;}
+  .svc-feat:hover img{transform:scale(1.07);filter:brightness(.72);}
+  .svc-feat .tx{position:relative;z-index:2;padding:32px;width:100%;}
+  .svc-feat .num{font-family:var(--sans);font-weight:300;letter-spacing:.3em;text-transform:uppercase;font-size:11px;color:var(--accent);margin-bottom:12px;}
+  .svc-feat h3{font-size:clamp(24px,2.1vw,31px);color:#fff;margin-bottom:18px;}
+  .svc-feat ul{list-style:none;margin:0 0 22px;padding:0;}
+  .svc-feat li{font-size:14px;color:#E4E6E9;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:11px;}
+  .svc-feat li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--accent);flex:none;}
+  .svc-feat .more{font-family:var(--sans);font-weight:300;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;color:var(--platinum);transition:color .3s;}
+  .svc-feat:hover .more{color:#fff;}
+  @media(max-width:860px){.svc-feat-grid{grid-template-columns:1fr;} .svc-feat{min-height:430px;}}
 
   /* video facades */
   .films{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
@@ -325,34 +327,34 @@
 <section id="services">
   <div class="sec-head reveal"><div class="kicker">01 — What We Offer</div><h2>Everything your listing needs.</h2><p>A full production studio under one roof — from cinematic video and editorial photography to the technical add-ons agents rely on to sell faster.</p></div>
 
-  <div class="svc-group reveal">
-    <div class="gl">Video</div>
-    <div class="svc-grid">
-      <a class="svc" href="#work"><h3>Cinematic Listing Films</h3><p>Story-driven property tours with cinema cameras, gimbals, and color grading that elevate any home.</p></a>
-      <a class="svc" href="#work"><h3>Social Reels</h3><p>Vertical, scroll-stopping reels built for Instagram, TikTok &amp; Facebook reach and engagement.</p></a>
-      <a class="svc" href="#work"><h3>Agent &amp; Brand Films</h3><p>Talking-head and brand stories that build your authority and keep you top of mind with clients.</p></a>
-      <a class="svc" href="#work"><h3>Aerial &amp; Drone Video</h3><p>FAA-licensed aerial cinematography that frames the property, the lot, and the neighborhood.</p></a>
-    </div>
-  </div>
-
-  <div class="svc-group reveal">
-    <div class="gl">Photography</div>
-    <div class="svc-grid">
-      <a class="svc" href="#gallery"><h3>HDR Listing Photos</h3><p>Bright, true-to-life interior &amp; exterior photography that highlights every room and detail.</p></a>
-      <a class="svc" href="#gallery"><h3>Architectural</h3><p>Editorial-grade, magazine-quality images for luxury listings, builders, and designers.</p></a>
-      <a class="svc" href="#gallery"><h3>Twilight Photography</h3><p>Capture the glow of golden hour — warm interiors and dramatic skies that stop the scroll.</p></a>
-      <a class="svc" href="#gallery"><h3>Aerial Photography</h3><p>Striking drone stills that showcase acreage, location, and standout exterior features.</p></a>
-    </div>
-  </div>
-
-  <div class="svc-group reveal">
-    <div class="gl">Signature Add-Ons</div>
-    <div class="svc-grid">
-      <a class="svc" href="#contact"><h3>3D / Matterport Tours</h3><p>Immersive virtual walkthroughs that let buyers explore the home from anywhere, anytime.</p></a>
-      <a class="svc" href="#contact"><h3>Floor Plans</h3><p>Clean 2D &amp; 3D floor plans that help buyers instantly understand the layout and flow.</p></a>
-      <a class="svc" href="#contact"><h3>Virtual Staging</h3><p>Digitally furnish empty rooms so buyers can picture the full potential of every space.</p></a>
-      <a class="svc" href="#contact"><h3>Grass &amp; Sky / Virtual Twilight</h3><p>Post-production magic — vibrant lawns, blue skies, and stunning daytime-to-twilight conversions.</p></a>
-    </div>
+  <div class="svc-feat-grid">
+    <a class="svc-feat reveal" href="#films">
+      <img src="https://portaproductions.com/assets/svc-video.jpg" alt="Cinematic real estate videography and aerial drone work" loading="lazy">
+      <div class="tx">
+        <div class="num">01 — Video</div>
+        <h3>Cinematic Video</h3>
+        <ul><li>Cinematic Listing Films</li><li>Social Reels</li><li>Agent &amp; Brand Films</li><li>Aerial &amp; Drone</li></ul>
+        <span class="more">Watch the films →</span>
+      </div>
+    </a>
+    <a class="svc-feat reveal d1" href="#gallery">
+      <img src="https://portaproductions.com/assets/svc-photo.jpg" alt="Editorial real estate photography" loading="lazy">
+      <div class="tx">
+        <div class="num">02 — Photography</div>
+        <h3>Editorial Photography</h3>
+        <ul><li>HDR Listing Photos</li><li>Architectural</li><li>Twilight</li><li>Aerial Stills</li></ul>
+        <span class="more">See the gallery →</span>
+      </div>
+    </a>
+    <a class="svc-feat reveal d2" href="#contact">
+      <img src="https://portaproductions.com/assets/svc-addons.jpg" alt="3D tours, floor plans and virtual staging" loading="lazy">
+      <div class="tx">
+        <div class="num">03 — Signature Add-Ons</div>
+        <h3>The Finishing Touch</h3>
+        <ul><li>3D / Matterport Tours</li><li>Floor Plans</li><li>Virtual Staging</li><li>Grass &amp; Sky / Twilight</li></ul>
+        <span class="more">Add to your shoot →</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -461,7 +463,7 @@
       <div class="stats">
       <div class="stat"><div class="num"><span class="count" data-to="5.0" data-dec="1">5.0</span>★</div><div class="lab">Google Rating</div></div>
       <div class="stat"><div class="num"><span class="count" data-to="24" data-dec="0">24</span>–<span class="count" data-to="72" data-dec="0">72</span>h</div><div class="lab">Typical Turnaround</div></div>
-      <div class="stat"><div class="num"><span class="count" data-to="10" data-dec="0">10</span></div><div class="lab">5-Star Reviews</div></div>
+      <div class="stat"><div class="num"><span class="count" data-to="14" data-dec="0">14</span></div><div class="lab">5-Star Reviews</div></div>
       <div class="stat"><div class="num">DFW</div><div class="lab">&amp; Nationwide</div></div>
       </div>
     </div>
@@ -470,7 +472,7 @@
 
 <!-- REVIEWS -->
 <section id="reviews" class="darker">
-  <div class="sec-head reveal"><div class="kicker">06 — What Clients Say</div><h2>Trusted by people who sell.</h2><p>A perfect <em>5.0★</em> rating across 10 Google reviews.</p></div>
+  <div class="sec-head reveal"><div class="kicker">06 — What Clients Say</div><h2>Trusted by people who sell.</h2><p>A perfect <em>5.0★</em> rating across 14 Google reviews.</p></div>
   <div class="rev-grid">
     <div class="quote reveal"><p>“Porta Productions absolutely exceeded my expectations. Ariel created a professional bio video for my real estate business, and the response has been incredible — so many compliments on the quality, the storytelling, and how authentically it represents who I am.”</p><div class="by">Brittani Darby · Agent, DFW</div></div>
     <div class="quote reveal d1"><p>“Ariel is fantastic! Wonderful communication, quick turnaround, and beautiful images my sellers love.”</p><div class="by">Hannah Petty · Realtor, DFW</div></div>
