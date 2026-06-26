@@ -586,7 +586,15 @@
 
 <script>
   // ensure hero video autoplays (muted autoplay can need a nudge)
-  (function(){var hv=document.querySelector('#hero video');if(!hv)return;hv.muted=true;function go(){var p=hv.play();if(p&&p.catch)p.catch(function(){});}go();document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});['touchstart','click'].forEach(function(e){document.addEventListener(e,go,{once:true,passive:true});});})();
+  (function(){var hv=document.querySelector('#hero video');if(!hv)return;
+    var B='https://portaproductions.com/assets/';
+    if(window.matchMedia('(max-width:760px)').matches){ // phones: single vertical reel fills the screen
+      hv.poster=B+'hero-mobile-poster.jpg'; hv.src=B+'hero-mobile.mp4'; hv.load();
+    }
+    hv.muted=true;function go(){var p=hv.play();if(p&&p.catch)p.catch(function(){});}go();
+    document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
+    ['touchstart','click'].forEach(function(e){document.addEventListener(e,go,{once:true,passive:true});});
+  })();
 
   // mobile menu
   var burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
