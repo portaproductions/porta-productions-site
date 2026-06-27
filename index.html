@@ -463,8 +463,15 @@
       <div class="addon-tx"><h3>Virtual Staging</h3><p>Empty rooms digitally furnished so buyers can picture living there — gorgeous, at a fraction of physical staging.</p></div>
     </div>
     <div class="addon reveal d3">
-      <div class="addon-img" style="background-image:url('assets/work-3.jpg')"><span class="addon-badge">Twilight</span></div>
-      <div class="addon-tx"><h3>Twilight &amp; Golden Hour</h3><p>Dramatic dusk skies, warm glowing interiors, and lush grass &amp; sky enhancement that make a listing stop the scroll.</p></div>
+      <div class="ba" style="--p:50%">
+        <img class="ba-after" src="assets/finish-twilight-after.jpg" alt="After — twilight" loading="lazy">
+        <img class="ba-before" src="assets/finish-twilight-before.jpg" alt="Before — daytime" loading="lazy">
+        <span class="ba-line"></span>
+        <span class="ba-knob">⟺</span>
+        <input class="ba-input" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+        <span class="ba-tag ba-tagL">Before</span><span class="ba-tag ba-tagR">After</span>
+      </div>
+      <div class="addon-tx"><h3>Twilight &amp; Golden Hour</h3><p>The same listing, day to dusk — drag the slider to watch the windows glow and the sky turn cinematic.</p></div>
     </div>
   </div>
 </section>
