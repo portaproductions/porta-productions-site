@@ -696,6 +696,13 @@
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.14});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
+  // ensure gallery tiles reveal even if cached or the inline onload was missed
+  document.querySelectorAll('.tile img').forEach(function(im){
+    if(im.complete && im.naturalWidth>0){ im.classList.add('loaded'); }
+    im.addEventListener('load', function(){ im.classList.add('loaded'); });
+    im.addEventListener('error', function(){ im.classList.add('loaded'); });
+  });
+
   // gallery filter
   function expandGallery(){var g=document.querySelector('.gal');if(g)g.classList.remove('collapsed');var gm=document.getElementById('galmore');if(gm)gm.style.display='none';}
   var _gm=document.getElementById('galmore'); if(_gm) _gm.addEventListener('click',expandGallery);
