@@ -313,15 +313,15 @@
   .foot-grid .blurb{font-size:13px;color:var(--silver);max-width:34ch;margin-top:14px;}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:11px;letter-spacing:.1em;color:var(--silver);flex-wrap:wrap;gap:12px;}
 
-  /* logo wall */
-  .logowall{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line-d);border:1px solid var(--line-d);max-width:1120px;margin:0 auto;}
-  @media(max-width:900px){.logowall{grid-template-columns:repeat(3,1fr);}}
-  @media(max-width:520px){.logowall{grid-template-columns:repeat(2,1fr);}}
-  .lw{background:var(--paper);aspect-ratio:5/3;display:flex;align-items:center;justify-content:center;padding:16px;position:relative;}
-  .lw span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--caps);font-weight:500;font-size:13px;letter-spacing:.05em;color:#3F4853;padding:0 12px;line-height:1.25;transition:.3s;}
-  .lw:hover span{color:var(--navy);}
-  .lw img{max-height:40px;max-width:78%;object-fit:contain;filter:grayscale(1) brightness(.35);opacity:.82;transition:.35s;}
-  .lw:hover img{filter:grayscale(1) brightness(.12);opacity:1;}
+  /* brokerage marquee */
+  .bk{max-width:1180px;margin:0 auto;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+  .bk-track{display:flex;align-items:center;width:max-content;animation:bkscroll 48s linear infinite;}
+  .bk:hover .bk-track{animation-play-state:paused;}
+  .bk-item{white-space:nowrap;font-family:var(--sans);font-weight:400;font-size:15px;letter-spacing:.26em;text-transform:uppercase;color:#5A6675;padding:0 30px;transition:color .35s;}
+  .bk-item:hover{color:var(--navy);}
+  .bk-sep{width:6px;height:6px;flex:0 0 auto;transform:rotate(45deg);background:var(--accent);opacity:.5;}
+  @keyframes bkscroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media(max-width:600px){.bk-item{font-size:12.5px;letter-spacing:.2em;padding:0 18px;}}
   /* instagram */
   .ig{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
   @media(max-width:900px){.ig{grid-template-columns:repeat(3,1fr);}}
@@ -574,19 +574,35 @@
 <section id="brokerages" class="paper" style="text-align:center;">
   <div class="kicker reveal" style="text-align:center;">Trusted Across DFW</div>
   <h2 class="reveal d1" style="margin:14px auto 38px;max-width:20ch;">Brokerages I've worked with.</h2>
-  <div class="logowall reveal d2">
-    <div class="lw"><span>COMPASS</span><img src="assets/logos/compass.svg" alt="COMPASS" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>BRIGGS FREEMAN SOTHEBY'S</span><img src="assets/logos/briggs-freeman.svg" alt="BRIGGS FREEMAN SOTHEBY'S" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>ALLIE BETH ALLMAN</span><img src="assets/logos/allie-beth-allman.svg" alt="ALLIE BETH ALLMAN" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>DOUGLAS ELLIMAN</span><img src="assets/logos/douglas-elliman.svg" alt="DOUGLAS ELLIMAN" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>ENGEL &amp; VÖLKERS</span><img src="assets/logos/engel-volkers.svg" alt="ENGEL & VÖLKERS" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>THE AGENCY</span><img src="assets/logos/the-agency.svg" alt="THE AGENCY" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>EBBY HALLIDAY</span><img src="assets/logos/ebby-halliday.svg" alt="EBBY HALLIDAY" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>COLDWELL BANKER</span><img src="assets/logos/coldwell-banker.svg" alt="COLDWELL BANKER" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>RE/MAX</span><img src="assets/logos/remax.svg" alt="RE/MAX" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>eXp REALTY</span><img src="assets/logos/exp-realty.svg" alt="eXp REALTY" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>ROGERS HEALY</span><img src="assets/logos/rogers-healy.svg" alt="ROGERS HEALY" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
-    <div class="lw"><span>CENTURY 21</span><img src="assets/logos/century-21.svg" alt="CENTURY 21" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()"></div>
+  <div class="bk reveal d2">
+    <div class="bk-track">
+      <span class="bk-item">Compass</span><span class="bk-sep"></span>
+      <span class="bk-item">Briggs Freeman Sotheby's</span><span class="bk-sep"></span>
+      <span class="bk-item">Allie Beth Allman</span><span class="bk-sep"></span>
+      <span class="bk-item">Douglas Elliman</span><span class="bk-sep"></span>
+      <span class="bk-item">Engel &amp; Völkers</span><span class="bk-sep"></span>
+      <span class="bk-item">The Agency</span><span class="bk-sep"></span>
+      <span class="bk-item">Ebby Halliday</span><span class="bk-sep"></span>
+      <span class="bk-item">Coldwell Banker</span><span class="bk-sep"></span>
+      <span class="bk-item">RE/MAX</span><span class="bk-sep"></span>
+      <span class="bk-item">eXp Realty</span><span class="bk-sep"></span>
+      <span class="bk-item">Rogers Healy</span><span class="bk-sep"></span>
+      <span class="bk-item">Century 21</span><span class="bk-sep"></span>
+      <span class="bk-item">Monument Realty</span><span class="bk-sep"></span>
+      <span class="bk-item" aria-hidden="true">Compass</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Briggs Freeman Sotheby's</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Allie Beth Allman</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Douglas Elliman</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Engel &amp; Völkers</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">The Agency</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Ebby Halliday</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Coldwell Banker</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">RE/MAX</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">eXp Realty</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Rogers Healy</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Century 21</span><span class="bk-sep" aria-hidden="true"></span>
+      <span class="bk-item" aria-hidden="true">Monument Realty</span><span class="bk-sep" aria-hidden="true"></span>
+    </div>
   </div>
 </section>
 
