@@ -316,9 +316,8 @@
   /* brokerage marquee */
   .bk{max-width:1180px;margin:0 auto;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
   .bk-track{display:flex;align-items:center;width:max-content;animation:bkscroll 48s linear infinite;}
-  .bk:hover .bk-track{animation-play-state:paused;}
-  .bk-item{white-space:nowrap;font-family:var(--sans);font-weight:400;font-size:15px;letter-spacing:.26em;text-transform:uppercase;color:#5A6675;padding:0 30px;transition:color .35s;}
-  .bk-item:hover{color:var(--navy);}
+  .bk-item{white-space:nowrap;font-family:var(--sans);font-weight:400;font-size:15px;letter-spacing:.26em;text-transform:uppercase;color:#5A6675;padding:0 30px;transition:color .35s,transform .35s;}
+  .bk-item:hover{color:var(--navy);transform:scale(1.06);}
   .bk-sep{width:6px;height:6px;flex:0 0 auto;transform:rotate(45deg);background:var(--accent);opacity:.5;}
   @keyframes bkscroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
   @media(max-width:600px){.bk-item{font-size:12.5px;letter-spacing:.2em;padding:0 18px;}}
@@ -328,6 +327,22 @@
   .igt{aspect-ratio:1;overflow:hidden;position:relative;border:1px solid var(--line);display:block;background:#16202C;}
   .igt img{width:100%;height:100%;object-fit:cover;transition:transform .6s,opacity .4s;opacity:.9;}
   .igt:hover img{transform:scale(1.07);opacity:1;}
+  /* luxury micro-interactions */
+  html{scroll-behavior:smooth;}
+  nav.links a:not(.btn){position:relative;}
+  nav.links a:not(.btn)::after{content:"";position:absolute;left:50%;right:50%;bottom:-7px;height:1px;background:var(--accent);transition:left .35s cubic-bezier(.2,.7,.2,1),right .35s cubic-bezier(.2,.7,.2,1);}
+  nav.links a:not(.btn):hover::after{left:0;right:0;}
+  .btn{position:relative;overflow:hidden;}
+  .btn::before{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);transition:left .65s cubic-bezier(.2,.7,.2,1);pointer-events:none;}
+  .btn:hover::before{left:150%;}
+  .btn:hover{transform:translateY(-2px);}
+  .tile .meta{transition:transform .5s cubic-bezier(.2,.7,.2,1);}
+  .tile:hover .meta{transform:translateY(-4px);}
+  .tile .meta .c{transition:opacity .4s,letter-spacing .4s;}
+  .tile:hover .meta .c{letter-spacing:.30em;}
+  .svc-feat .more{display:inline-block;transition:color .3s,transform .35s;}
+  .svc-feat:hover .more{transform:translateX(5px);}
+  @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}.reveal{opacity:1!important;transform:none!important;}}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
   .reveal.in{opacity:1;transform:none;}
   .d1{transition-delay:.07s;}.d2{transition-delay:.15s;}.d3{transition-delay:.23s;}.d4{transition-delay:.31s;}.d5{transition-delay:.39s;}.d6{transition-delay:.47s;}
