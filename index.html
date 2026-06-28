@@ -6,6 +6,11 @@
 <title>Porta Productions | Cinematic Real Estate Media — Dallas–Fort Worth</title>
 <meta name="description" content="Dallas–Fort Worth's premium real estate & brand media studio. Cinematic listing films, HDR & aerial photography, social reels, 3D tours, virtual staging and twilight. 24–72 hour delivery.">
 <meta name="theme-color" content="#121A25">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="https://portaproductions.com/assets/hero-wall-poster.jpg?v=3">
 <link rel="canonical" href="https://portaproductions.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://portaproductions.com/">
@@ -657,7 +662,9 @@
       <div class="line"><span class="l">Studio</span><span class="v">Dallas–Fort Worth, Texas</span></div>
       <a class="btn" href="https://porta-productions-1.aryeo.com/order-forms/019e715f-4278-7005-ab7a-bc0196f6fa6b" target="_blank" rel="noopener" style="margin-top:8px;">Order Online</a>
     </div>
-    <form class="reveal d1" id="inquiry">
+    <form class="reveal d1" id="inquiry" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="inquiry">
+      <p class="full" hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
       <input class="" type="text" name="name" placeholder="Name" required>
       <input type="email" name="email" placeholder="Email" required>
       <input type="tel" name="phone" placeholder="Phone">
@@ -788,15 +795,26 @@
     });
   });
 
-  // contact form -> mailto (no backend)
-  document.getElementById('inquiry').addEventListener('submit',function(e){
-    e.preventDefault();var f=e.target;
-    var body='Name: '+f.name.value+'%0D%0AEmail: '+f.email.value+'%0D%0APhone: '+f.phone.value
-      +'%0D%0ABrokerage: '+f.company.value+'%0D%0AProperty: '+f.address.value
-      +'%0D%0AService: '+f.service.value+'%0D%0A%0D%0A'+encodeURIComponent(f.message.value);
-    window.location.href='mailto:ariel@porta.productions?subject=Project%20Inquiry%20—%20'+encodeURIComponent(f.name.value)+'&body='+body;
-    document.getElementById('formnote').textContent='Opening your email app…';
-  });
+  // contact form -> Netlify Forms (AJAX, stays on page, no lost leads)
+  (function(){
+    var form=document.getElementById('inquiry');if(!form)return;
+    var note=document.getElementById('formnote');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.reportValidity())return;
+      var btn=form.querySelector('button[type=submit]');
+      btn.disabled=true;note.style.color='var(--silver)';note.textContent='Sending…';
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:new URLSearchParams(new FormData(form)).toString()})
+      .then(function(r){if(!r.ok)throw new Error(r.status);
+        form.reset();note.style.color='#9AA0A7';
+        note.textContent='Thank you — your inquiry is in. We’ll reply shortly, usually the same day.';})
+      .catch(function(){note.style.color='#C98B7A';
+        note.textContent='Something went wrong — please email ariel@porta.productions directly.';})
+      .finally(function(){btn.disabled=false;});
+    });
+    document.querySelectorAll('img').forEach(function(i){i.decoding='async';});
+  })();
 </script>
 </body>
 </html>
