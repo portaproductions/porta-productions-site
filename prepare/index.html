@@ -4,16 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#121A25">
-<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID. Loads only once a real ID is set. -->
-<script>
-  window.GA_ID='G-XXXXXXXXXX';
-  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-  if(!/XXXXXXXX/.test(window.GA_ID)){
-    var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+window.GA_ID;document.head.appendChild(gs);
-    gtag('js',new Date());gtag('config',window.GA_ID);
-  }
-  window.track=function(name,params){try{if(!/XXXXXXXX/.test(window.GA_ID))gtag('event',name,params||{});}catch(e){}};
-</script>
 <title>Prepare Your Listing for the Shoot | Porta Productions</title>
 <meta name="description" content="A room-by-room prep checklist to get your listing camera-ready for your Porta Productions photo &amp; video shoot — with progress tracking, exterior and twilight tips.">
 <link rel="canonical" href="https://portaproductions.com/prepare/">
@@ -190,9 +180,33 @@ footer a{color:var(--platinum);text-decoration:none}
 .toolbar button{font-family:var(--body);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;background:none;border:none;color:var(--silver);cursor:pointer;padding:6px 0;border-bottom:1px solid transparent}
 .toolbar button:hover{color:var(--navy);border-bottom-color:var(--platinum)}
 
+/* ─── Not-applicable controls ─── */
+.card-right{display:flex;align-items:center;gap:14px}
+.na-toggle{font-family:var(--body);font-size:.6rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;background:none;border:1px solid var(--hairline);color:var(--silver);cursor:pointer;padding:5px 10px;transition:all .2s;white-space:nowrap}
+.na-toggle:hover{border-color:var(--silver);color:var(--navy)}
+.room-head{display:flex;justify-content:space-between;align-items:center}
+[data-card].na ul,[data-card].na .card-bar,[data-card].na .room-art{opacity:.35}
+[data-card].na .check{pointer-events:none}
+[data-card].na .item-na{visibility:hidden}
+[data-card].na .na-toggle{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.dark [data-card].na .na-toggle{background:var(--white);color:var(--navy);border-color:var(--white)}
+.dark .na-toggle{border-color:var(--hairline-inv);color:var(--silver)}
+.dark .na-toggle:hover{border-color:var(--platinum);color:var(--white)}
+.card li,.room li{display:flex;align-items:flex-start}
+.card li .check,.room li .check{flex:1}
+.item-na{font-family:var(--body);font-size:.58rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;background:none;border:none;color:var(--platinum);cursor:pointer;padding:16px 0 0 12px;transition:color .2s}
+.item-na:hover{color:var(--navy)}
+.dark .item-na{color:var(--steel)}
+.dark .item-na:hover{color:var(--white)}
+li.na .check{opacity:.4;pointer-events:none}
+li.na .txt{text-decoration:line-through;text-decoration-color:var(--platinum)}
+li.na .item-na{color:var(--navy)}
+.dark li.na .item-na{color:var(--white)}
+
 /* ─── Print ─── */
 @media print{
-  header,.progress-shell,.toolbar,.cta .btn-row,footer{display:none}
+  header,.progress-shell,.toolbar,.cta .btn-row,footer,.na-toggle,.item-na{display:none}
+  li.na{display:none}
   body{background:#fff}
   .hero{padding-top:30px}
   .hero,.big-three,section.dark{background:#fff;color:var(--steel)}
@@ -295,15 +309,15 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M4.9 4.9l1.4 1.4M2 12h2M19.7 4.9l-1.4 1.4M22 12h-2"/><path d="M9 17h6M10 20h4M12 6a5 5 0 0 0-3 9c.7.5 1.3 1 1.3 2h3.4c0-1 .6-1.5 1.3-2a5 5 0 0 0-3-9z"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">Light &amp; Air</span>
         <h3>Light it up</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Turn on every light in the house and replace any dead or mismatched bulbs.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Open all blinds, shades, and curtains for natural light.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Turn off all ceiling fans (they blur in photos) and switch off every TV.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Set the thermostat to a comfortable temperature for the crew.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Turn on every light in the house and replace any dead or mismatched bulbs.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Open all blinds, shades, and curtains for natural light.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Turn off all ceiling fans (they blur in photos) and switch off every TV.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Set the thermostat to a comfortable temperature for the crew.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -311,15 +325,15 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8L12 3z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/><path d="M5 16l.7 1.6L7.3 18l-1.6.7L5 20l-.7-1.3L2.7 18l1.6-.4L5 16z" stroke-opacity=".55"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">Tidy &amp; Clean</span>
         <h3>Clear the clutter</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear countertops, tables, and nightstands down to one or two styled items.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Put away personal items: family photos, mail, keys, chargers, remotes.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hide cords and wires wherever possible.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Give the home a fresh clean — vacuum, mop, dust, and wipe mirrors and glass.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear countertops, tables, and nightstands down to one or two styled items.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Put away personal items: family photos, mail, keys, chargers, remotes.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hide cords and wires wherever possible.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Give the home a fresh clean — vacuum, mop, dust, and wipe mirrors and glass.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -327,15 +341,15 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="1.7"/><circle cx="12.5" cy="4.5" r="1.7"/><circle cx="17" cy="6" r="1.7"/><circle cx="19.5" cy="10" r="1.7"/><path d="M13 9c-2.6 0-4.9 2-5.6 4.6-.4 1.5.2 3.4 2 3.4 1.4 0 2-.8 3.6-.8s2.2.8 3.6.8c1.8 0 2.4-1.9 2-3.4C17.9 11 15.6 9 13 9z" transform="translate(-1 2)"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">Pets &amp; Cars</span>
         <h3>Pets, cars &amp; bins</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Secure pets — crate them or keep them off-site during the shoot.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hide pet bowls, beds, toys, and litter boxes.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Move all cars out of the driveway and away from the front of the house.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Roll trash and recycling bins out of view.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Secure pets — crate them or keep them off-site during the shoot.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hide pet bowls, beds, toys, and litter boxes.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Move all cars out of the driveway and away from the front of the house.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Roll trash and recycling bins out of view.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -343,15 +357,15 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4 0-6.5-2.6-6.5-5.5C5.5 11 9 8.4 12 4c3 4.4 6.5 7 6.5 11.5 0 2.9-2.5 5.5-6.5 5.5z" stroke-opacity="0"/><path d="M7 21h10M12 21v-6"/><path d="M12 15c-2.8 0-4.5-2-4.2-4.4C9.6 10.8 11 12 12 15zM12 15c2.8 0 4.5-2 4.2-4.4C14.4 10.8 13 12 12 15z"/><path d="M12 15c0-3.4 1-6 3.2-8.2M12 15c0-3.4-1-6-3.2-8.2" stroke-opacity="0"/><path d="M12 12.2c-.4-2.8.6-5 2.6-6.7M12 12.2c.4-2.8-.6-5-2.6-6.7" stroke-opacity=".55"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">Final Touch</span>
         <h3>The little things</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Empty sinks; no dishes, sponges, or drying racks on display.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Straighten rugs and vacuum so they sit clean and flat.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Fresh flowers or a bowl of fruit add a warm, lived-in luxury touch.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Walk each room from the doorway — that's the camera's view.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Empty sinks; no dishes, sponges, or drying racks on display.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Straighten rugs and vacuum so they sit clean and flat.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Fresh flowers or a bowl of fruit add a warm, lived-in luxury touch.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Walk each room from the doorway — that's the camera's view.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -395,13 +409,13 @@ footer a{color:var(--platinum);text-decoration:none}
         <figcaption>Counters clear · one styled item</figcaption>
       </figure>
       <div>
-        <div class="room-num">01</div>
+        <div class="room-head"><div class="room-num">01</div><button class="na-toggle" type="button">Doesn't apply</button></div>
         <h3>Kitchen</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear counters — hide the toaster, blender, coffee maker, and knife block.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Remove magnets, papers, and sponges; stow dish soap and towels.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Shine the sink and stainless steel; no dishes in sight.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Leave one styled item — a bowl of fruit or a single cutting board.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear counters — hide the toaster, blender, coffee maker, and knife block.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Remove magnets, papers, and sponges; stow dish soap and towels.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Shine the sink and stainless steel; no dishes in sight.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Leave one styled item — a bowl of fruit or a single cutting board.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -434,13 +448,13 @@ footer a{color:var(--platinum);text-decoration:none}
         <figcaption>Pillows chopped · surfaces styled</figcaption>
       </figure>
       <div>
-        <div class="room-num">02</div>
+        <div class="room-head"><div class="room-num">02</div><button class="na-toggle" type="button">Doesn't apply</button></div>
         <h3>Living &amp; Family Rooms</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Fluff and karate-chop the pillows; fold throws neatly.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear the coffee table to a styled minimum (book, tray, candle).</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Remove remotes, chargers, and gaming gear.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Straighten furniture square to the room.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Fluff and karate-chop the pillows; fold throws neatly.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear the coffee table to a styled minimum (book, tray, candle).</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Remove remotes, chargers, and gaming gear.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Straighten furniture square to the room.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -468,13 +482,13 @@ footer a{color:var(--platinum);text-decoration:none}
         <figcaption>Hotel-style · nightstands to a lamp &amp; one accent</figcaption>
       </figure>
       <div>
-        <div class="room-num">03</div>
+        <div class="room-head"><div class="room-num">03</div><button class="na-toggle" type="button">Doesn't apply</button></div>
         <h3>Bedrooms</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Make every bed hotel-style; straighten and smooth the linens.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear nightstands and dressers down to a lamp and one accent.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Pick up the floor and remove items from under the bed.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Stow laundry baskets and hampers out of sight.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Make every bed hotel-style; straighten and smooth the linens.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear nightstands and dressers down to a lamp and one accent.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Pick up the floor and remove items from under the bed.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Stow laundry baskets and hampers out of sight.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -501,13 +515,13 @@ footer a{color:var(--platinum);text-decoration:none}
         <figcaption>Lids closed · fresh matching towels</figcaption>
       </figure>
       <div>
-        <div class="room-num">04</div>
+        <div class="room-head"><div class="room-num">04</div><button class="na-toggle" type="button">Doesn't apply</button></div>
         <h3>Bathrooms</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear counters — hide toothbrushes, toiletries, and soap.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hang fresh, matching, neatly folded towels.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Close all toilet lids; remove scales and trash cans.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Squeegee glass, clean mirrors, and straighten bath mats.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Clear counters — hide toothbrushes, toiletries, and soap.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hang fresh, matching, neatly folded towels.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Close all toilet lids; remove scales and trash cans.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Squeegee glass, clean mirrors, and straighten bath mats.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -530,15 +544,15 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-5"/><path d="M12 15c-3.5 0-5.6-2.6-5.2-5.6C9 9.9 10.8 11.4 12 15z"/><path d="M12 15c3.5 0 5.6-2.6 5.2-5.6C15 9.9 13.2 11.4 12 15z"/><path d="M12 11.5c-.5-3.6.8-6.3 3.3-8.3M12 11.5c.5-3.6-.8-6.3-3.3-8.3" stroke-opacity=".55"/><path d="M4 20h16"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">Grounds</span>
         <h3>Yard &amp; landscaping</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Mow, edge, and pull weeds; tidy beds and trim hedges.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Sweep walkways, the porch, and the patio; clean the front entry.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Coil and hide hoses; put away garden tools and kids' toys.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Straighten the doormat and keep seasonal decor minimal.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Mow, edge, and pull weeds; tidy beds and trim hedges.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Sweep walkways, the porch, and the patio; clean the front entry.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Coil and hide hoses; put away garden tools and kids' toys.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Straighten the doormat and keep seasonal decor minimal.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -546,14 +560,14 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h4m10 0h4M5 8l2-2m12 2l-2-2"/><path d="M7 14h4v-3h2v3h4"/><rect x="9" y="14" width="6" height="6" stroke-opacity="0"/><path d="M4 20h16M8 20v-3m8 3v-3"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">Cars &amp; Bins</span>
         <h3>Clear the frame</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Move every vehicle out of the driveway and off the street in front.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Ask neighbors, if you can, to do the same for exterior and aerial shots.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hide trash and recycling bins in the garage or out of view.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Move every vehicle out of the driveway and off the street in front.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Ask neighbors, if you can, to do the same for exterior and aerial shots.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Hide trash and recycling bins in the garage or out of view.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -561,14 +575,14 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9M12 12l-7 9h14l-7-9z" stroke-opacity="0"/><path d="M12 4v8M6 12h12M12 4l-8 8M12 4l8 8" stroke-opacity="0"/><path d="M12 12V4m0 0c-2 2-5 2.6-7 2 1 2.8 4 4.4 7 3.6M12 4c2 2 5 2.6 7 2-1 2.8-4 4.4-7 3.6" stroke-opacity="0"/><path d="M3 15c2-1.5 4 1.5 6 0s4 1.5 6 0 4 1.5 6 0M3 19c2-1.5 4 1.5 6 0s4 1.5 6 0 4 1.5 6 0"/><path d="M8 11a4 4 0 0 1 8 0" stroke-opacity=".55"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">Outdoor Living</span>
         <h3>Patio &amp; pool</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Arrange outdoor furniture and add cushions; open umbrellas.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Skim and run the pool so the water is clear; remove toys and the cleaner.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Uncover the grill if it's a feature; otherwise tuck it away.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Arrange outdoor furniture and add cushions; open umbrellas.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Skim and run the pool so the water is clear; remove toys and the cleaner.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Uncover the grill if it's a feature; otherwise tuck it away.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -576,14 +590,14 @@ footer a{color:var(--platinum);text-decoration:none}
       <div class="card" data-card>
         <div class="card-top">
           <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/><path d="M17 4l.6 1.4L19 6l-1.4.6L17 8l-.6-1.4L15 6l1.4-.6L17 4z" stroke-opacity=".7"/></svg>
-          <span class="count" data-count></span>
+          <div class="card-right"><span class="count" data-count></span><button class="na-toggle" type="button">Doesn't apply</button></div>
         </div>
         <span class="sub">After Dark</span>
         <h3>For twilight shoots</h3>
         <ul>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Turn on ALL interior and exterior lights, including landscape lighting.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Have water features and the pool running and lit.</span></label></li>
-          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">We'll need access about 30 minutes before sunset — cars gone, home ready.</span></label></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Turn on ALL interior and exterior lights, including landscape lighting.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">Have water features and the pool running and lit.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
+          <li><label class="check"><input type="checkbox"><span class="box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span><span class="txt">We'll need access about 30 minutes before sunset — cars gone, home ready.</span></label><button class="item-na" type="button" title="This item doesn't apply">n/a</button></li>
         </ul>
         <div class="card-bar"><i></i></div>
       </div>
@@ -626,41 +640,92 @@ footer a{color:var(--platinum);text-decoration:none}
 
 <script>
 (function(){
-  var KEY='porta-prep-v1';
+  var KEY='porta-prep-v2';
   var boxes=[].slice.call(document.querySelectorAll('.check input'));
-  var saved={};
-  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-  boxes.forEach(function(b,i){ if(saved[i]) b.checked=true; });
+  var lis=boxes.map(function(b){return b.closest('li')});
+  var cards=[].slice.call(document.querySelectorAll('[data-card]'));
+  var itemNAs=[].slice.call(document.querySelectorAll('.item-na'));
+  var cardNAs=[].slice.call(document.querySelectorAll('.na-toggle'));
+
+  var state={c:{},ni:{},nc:{}};
+  try{
+    var s=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(s&&s.c) state=s;
+    else{ // migrate v1 checks
+      var v1=JSON.parse(localStorage.getItem('porta-prep-v1')||'{}');
+      state.c=v1;
+    }
+  }catch(e){}
+
+  boxes.forEach(function(b,i){ if(state.c[i]) b.checked=true; });
+  lis.forEach(function(li,i){ if(state.ni[i]) li.classList.add('na'); });
+  cards.forEach(function(cd,i){
+    if(state.nc[i]) cd.classList.add('na');
+    var t=cd.querySelector('.na-toggle');
+    if(t) t.textContent=cd.classList.contains('na')?'Applies after all':"Doesn't apply";
+  });
+
+  function eligible(i){
+    return !lis[i].classList.contains('na') && !boxes[i].closest('[data-card]').classList.contains('na');
+  }
 
   function refresh(){
-    var done=0, state={};
-    boxes.forEach(function(b,i){ if(b.checked){done++;state[i]=1;} });
-    var pct=boxes.length?Math.round(done/boxes.length*100):0;
+    var done=0,total=0;
+    state.c={};state.ni={};state.nc={};
+    boxes.forEach(function(b,i){
+      if(b.checked) state.c[i]=1;
+      if(lis[i].classList.contains('na')) state.ni[i]=1;
+      if(eligible(i)){ total++; if(b.checked) done++; }
+    });
+    cards.forEach(function(cd,i){ if(cd.classList.contains('na')) state.nc[i]=1; });
+    var pct=total?Math.round(done/total*100):0;
     document.getElementById('pfill').style.width=pct+'%';
     document.getElementById('ppct').textContent=pct+'%';
     try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
-    // per-card
-    [].slice.call(document.querySelectorAll('[data-card]')).forEach(function(card){
+    cards.forEach(function(card){
       var cb=[].slice.call(card.querySelectorAll('.check input'));
-      var d=cb.filter(function(x){return x.checked}).length;
-      var bar=card.querySelector('.card-bar i');
-      if(bar) bar.style.width=(cb.length?d/cb.length*100:0)+'%';
       var cnt=card.querySelector('[data-count]');
-      if(cnt){ cnt.textContent=d+' / '+cb.length; cnt.classList.toggle('done',d===cb.length); }
+      var bar=card.querySelector('.card-bar i');
+      if(card.classList.contains('na')){
+        if(cnt){cnt.textContent='n/a';cnt.classList.remove('done');}
+        if(bar) bar.style.width='0%';
+        return;
+      }
+      var el=cb.filter(function(x){return !x.closest('li').classList.contains('na')});
+      var d=el.filter(function(x){return x.checked}).length;
+      if(bar) bar.style.width=(el.length?d/el.length*100:0)+'%';
+      if(cnt){ cnt.textContent=d+' / '+el.length; cnt.classList.toggle('done',el.length>0&&d===el.length); }
     });
   }
+
   boxes.forEach(function(b){ b.addEventListener('change',refresh); });
+  itemNAs.forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      var li=btn.closest('li');
+      li.classList.toggle('na');
+      btn.title=li.classList.contains('na')?'Bring this item back':"This item doesn't apply";
+      refresh();
+    });
+  });
+  cardNAs.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var cd=btn.closest('[data-card]');
+      cd.classList.toggle('na');
+      btn.textContent=cd.classList.contains('na')?'Applies after all':"Doesn't apply";
+      refresh();
+    });
+  });
   document.getElementById('resetBtn').addEventListener('click',function(){
-    boxes.forEach(function(b){b.checked=false}); refresh();
+    boxes.forEach(function(b){b.checked=false});
+    lis.forEach(function(li){li.classList.remove('na')});
+    cards.forEach(function(cd){cd.classList.remove('na')});
+    cardNAs.forEach(function(btn){btn.textContent="Doesn't apply"});
+    refresh();
   });
   refresh();
 })();
 </script>
 
-<script>
-  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(){window.track&&track('contact_phone');});});
-  document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener('click',function(){window.track&&track('contact_email');});});
-  document.querySelectorAll('a[href*="aryeo.com"]').forEach(function(a){a.addEventListener('click',function(){window.track&&track('order_online_click');});});
-</script>
 </body>
 </html>
