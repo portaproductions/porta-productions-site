@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page not found | Porta Productions</title>
+<script>
+  window.GA_ID='G-XXXXXXXXXX';
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  if(!/XXXXXXXX/.test(window.GA_ID)){
+    var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+window.GA_ID;document.head.appendChild(gs);
+    gtag('js',new Date());gtag('config',window.GA_ID);
+  }
+  window.track=function(name,params){try{if(!/XXXXXXXX/.test(window.GA_ID))gtag('event',name,params||{});}catch(e){}};
+</script>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">

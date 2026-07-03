@@ -61,9 +61,34 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We're based in Dallas–Fort Worth and cover the entire metroplex — Dallas, Fort Worth, Plano, Frisco, McKinney and surrounding areas. We also travel nationwide for select projects; travel is simply quoted per job."}},
+    {"@type":"Question","name":"How fast is delivery?","acceptedAnswer":{"@type":"Answer","text":"Most photo and video projects are delivered within 24–72 hours. Larger productions get a clear timeline up front so you always know exactly when content will land."}},
+    {"@type":"Question","name":"Are you licensed for drone work?","acceptedAnswer":{"@type":"Answer","text":"Yes — all aerial work is performed under an FAA-licensed remote pilot, and we carry full insurance for every shoot."}},
+    {"@type":"Question","name":"How do revisions work?","acceptedAnswer":{"@type":"Answer","text":"You'll review a first draft and send timestamped notes. We refine until it's right, with clear revision rounds defined in your agreement so there are no surprises."}},
+    {"@type":"Question","name":"Who owns the final content?","acceptedAnswer":{"@type":"Answer","text":"You receive full digital usage rights to market the property or brand. Porta Productions retains the right to use clips for portfolio and promotion unless we agree otherwise in writing."}},
+    {"@type":"Question","name":"How do I book?","acceptedAnswer":{"@type":"Answer","text":"Use the form on our site or email us with the property address, services you need, and your timeline. We'll confirm scope, timing, and a shoot date — usually the same day."}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://i.ytimg.com">
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID (admin.google.com/analytics → Admin → Data Streams). Loads only once a real ID is set. -->
+<script>
+  window.GA_ID='G-XXXXXXXXXX';
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  if(!/XXXXXXXX/.test(window.GA_ID)){
+    var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+window.GA_ID;document.head.appendChild(gs);
+    gtag('js',new Date());gtag('config',window.GA_ID);
+  }
+  window.track=function(name,params){try{if(!/XXXXXXXX/.test(window.GA_ID))gtag('event',name,params||{});}catch(e){}};
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#121A25;--navy-2:#0E141C;--navy-3:#090D13;
@@ -186,8 +211,9 @@
   /* video facades */
   .films{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   @media(max-width:860px){.films{grid-template-columns:1fr;}}
-  .reels{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:24px;}
-  @media(max-width:980px){.reels{grid-template-columns:repeat(2,1fr);}}
+  .reels{display:grid;grid-template-columns:repeat(3,minmax(0,300px));justify-content:start;gap:16px;margin-top:24px;}
+  @media(max-width:980px){.reels{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  .ytlite video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;background:#000;}
   .ytlite{position:relative;cursor:pointer;background-size:cover;background-position:center;overflow:hidden;border:0;transition:transform .5s,box-shadow .5s;background-color:#16202C;}
   .ytlite:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);}
   .ytlite.r169{aspect-ratio:16/9;}.ytlite.r916{aspect-ratio:9/16;}
@@ -227,8 +253,11 @@
   .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
   @media(max-width:980px){.gal{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.gal{grid-template-columns:1fr;}}
-  .tile{position:relative;aspect-ratio:4/3;overflow:hidden;background:#16202C;border:1px solid var(--line);}
-  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .6s;opacity:0;}
+  .tile{position:relative;aspect-ratio:4/3;overflow:hidden;background:#16202C;border:1px solid var(--line);cursor:zoom-in;}
+  .tile::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.045) 50%,transparent 70%) #16202C;background-size:220% 100%;animation:shimmer 1.6s linear infinite;}
+  .tile:has(img.loaded)::before{animation:none;opacity:0;}
+  @keyframes shimmer{from{background-position:130% 0;}to{background-position:-90% 0;}}
+  .tile img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .6s;opacity:0;}
   .tile img.loaded{opacity:1;}
   .tile:hover img{transform:scale(1.07);}
   .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,20,.02),rgba(10,14,20,.62));pointer-events:none;}
@@ -348,14 +377,32 @@
   .svc-feat .more{display:inline-block;transition:color .3s,transform .35s;}
   .svc-feat:hover .more{transform:translateX(5px);}
   @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}.reveal{opacity:1!important;transform:none!important;}}
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1);}
   .reveal.in{opacity:1;transform:none;}
-  .d1{transition-delay:.07s;}.d2{transition-delay:.15s;}.d3{transition-delay:.23s;}.d4{transition-delay:.31s;}.d5{transition-delay:.39s;}.d6{transition-delay:.47s;}
+  .d1{transition-delay:.05s;}.d2{transition-delay:.1s;}.d3{transition-delay:.15s;}.d4{transition-delay:.2s;}.d5{transition-delay:.25s;}.d6{transition-delay:.3s;}
   .toplink{position:fixed;bottom:22px;right:22px;z-index:70;width:44px;height:44px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(14,20,28,.8);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:.4s;color:#fff;}
   .toplink.show{opacity:1;pointer-events:auto;}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:120;background:rgba(7,10,15,.94);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:56px clamp(16px,5vw,72px) 24px;}
+  .lb.open{display:flex;}
+  .lb img{max-width:100%;max-height:calc(100% - 90px);object-fit:contain;box-shadow:0 40px 120px -40px rgba(0,0,0,.9);}
+  .lb .lb-cap{margin-top:18px;text-align:center;}
+  .lb .lb-cap .c{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+  .lb .lb-cap .n{font-family:var(--serif);font-size:22px;color:#fff;}
+  .lb .lb-cap .book{display:inline-block;margin-top:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--platinum);border-bottom:1px solid var(--accent);padding-bottom:3px;transition:color .3s;}
+  .lb .lb-cap .book:hover{color:#fff;}
+  .lb button{position:absolute;background:none;border:1px solid var(--line);color:#fff;cursor:pointer;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;transition:.3s;}
+  .lb button:hover{border-color:var(--accent);background:rgba(154,160,167,.12);}
+  .lb .lb-close{top:18px;right:18px;}
+  .lb .lb-prev{left:14px;top:50%;transform:translateY(-50%);}
+  .lb .lb-next{right:14px;top:50%;transform:translateY(-50%);}
+  @media(max-width:620px){.lb .lb-prev{left:6px;}.lb .lb-next{right:6px;}}
 </style>
 </head>
 <body id="top">
+
+<a href="#gallery" style="position:absolute;left:-9999px;top:0;z-index:200;background:var(--navy-2);color:#fff;padding:12px 20px;font-size:13px;" onfocus="this.style.left='16px';this.style.top='16px'" onblur="this.style.left='-9999px'">Skip to content</a>
 
 <header id="header">
   <a class="brand" href="#top">
@@ -436,40 +483,40 @@
     <button data-filter="interiors">Interiors</button>
   </div>
   <div class="gal reveal d1 collapsed">
-    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-1.jpg" alt="1194 Courtland Dr, Frisco — twilight"><div class="meta"><div class="c">Luxury Listing · Twilight</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
-    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-2.jpg" alt="Dallas skyline aerial"><div class="meta"><div class="c">Aerial &amp; Drone</div><div class="n">Dallas Skyline</div></div></a>
-    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-3.jpg" alt="7440 Sienna Ridge, Fort Worth — twilight"><div class="meta"><div class="c">Twilight</div><div class="n">7440 Sienna Ridge · Fort Worth</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-4.jpg" alt="Rocky Branch, Dallas — interiors"><div class="meta"><div class="c">Interiors &amp; Staging</div><div class="n">Rocky Branch · Dallas</div></div></a>
-    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-5.jpg" alt="906 Greenbriar, Duncanville — pool twilight"><div class="meta"><div class="c">Pool &amp; Twilight</div><div class="n">906 Greenbriar · Duncanville</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-6.jpg" alt="1194 Courtland Dr media room"><div class="meta"><div class="c">Media Room</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
-    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-7.jpg" alt="1194 Courtland Dr pool & exterior"><div class="meta"><div class="c">Pool &amp; Exterior</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-8.jpg" alt="Frisco residence interiors"><div class="meta"><div class="c">Interiors</div><div class="n">Frisco Residence</div></div></a>
-    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-9.jpg" alt="Sienna Ridge, Fort Worth — twilight"><div class="meta"><div class="c">Twilight</div><div class="n">Sienna Ridge · Fort Worth</div></div></a>
-    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-10.jpg" alt="1105 Elmgrove, Keller — twilight"><div class="meta"><div class="c">Twilight</div><div class="n">1105 Elmgrove · Keller</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-11.jpg" alt="Fort Worth residence interiors"><div class="meta"><div class="c">Interiors</div><div class="n">Fort Worth Residence</div></div></a>
-    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-12.jpg" alt="Yacht Club, Dallas — waterfront twilight"><div class="meta"><div class="c">Waterfront Twilight</div><div class="n">Yacht Club · Dallas</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-13.jpg" alt="Rocky Branch, Dallas — dining & staging"><div class="meta"><div class="c">Dining &amp; Staging</div><div class="n">Rocky Branch · Dallas</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="https://portaproductions.com/assets/work-14.jpg" alt="1194 Courtland Dr spa bath"><div class="meta"><div class="c">Spa Bath</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
-    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-21.jpg" alt="Estate & Pool · DFW"><div class="meta"><div class="c">Aerial</div><div class="n">Estate &amp; Pool · DFW</div></div></a>
-    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-23.jpg" alt="Acreage · DFW"><div class="meta"><div class="c">Aerial</div><div class="n">Acreage · DFW</div></div></a>
-    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-33.jpg" alt="Estate Frontage · DFW"><div class="meta"><div class="c">Exterior</div><div class="n">Estate Frontage · DFW</div></div></a>
-    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-34.jpg" alt="Pool & Covered Patio · DFW"><div class="meta"><div class="c">Pool</div><div class="n">Pool &amp; Covered Patio · DFW</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-35.jpg" alt="Great Room · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Great Room · DFW</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-36.jpg" alt="Chef's Kitchen · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Chef's Kitchen · DFW</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-37.jpg" alt="Primary Suite · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Primary Suite · DFW</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-38.jpg" alt="Spa Bath · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Spa Bath · DFW</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-39.jpg" alt="Grand Entrance · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Grand Entrance · DFW</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-40.jpg" alt="Formal Dining · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Formal Dining · DFW</div></div></a>
-    <a class="tile" data-cat="interiors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-41.jpg" alt="Living Room · DFW"><div class="meta"><div class="c">Interior</div><div class="n">Living Room · DFW</div></div></a>
-    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-42.jpg" alt="Waterfront Patio · DFW"><div class="meta"><div class="c">Waterfront</div><div class="n">Waterfront Patio · DFW</div></div></a>
-    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-43.jpg" alt="Golden-hour aerial, Parker TX"><div class="meta"><div class="c">Aerial · Golden Hour</div><div class="n">Parker · TX</div></div></a>
-    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-44.jpg" alt="Estate aerial · DFW"><div class="meta"><div class="c">Aerial</div><div class="n">Estate &amp; Pool · Highland Village</div></div></a>
-    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-45.jpg" alt="Lakeside aerial · DFW"><div class="meta"><div class="c">Aerial</div><div class="n">Lakeside · Highland Village</div></div></a>
-    <a class="tile" data-cat="aerial" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-46.jpg" alt="Overhead aerial · DFW"><div class="meta"><div class="c">Aerial · Overhead</div><div class="n">Murphy · TX</div></div></a>
-    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-47.jpg" alt="Pool &amp; waterfall · DFW"><div class="meta"><div class="c">Pool &amp; Waterfall</div><div class="n">Highland Village · TX</div></div></a>
-    <a class="tile" data-cat="twilight" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-48.jpg" alt="Twilight exterior · DFW"><div class="meta"><div class="c">Twilight</div><div class="n">Murphy · TX</div></div></a>
-    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-49.jpg" alt="Front exterior · DFW"><div class="meta"><div class="c">Exterior</div><div class="n">Princeton · TX</div></div></a>
-    <a class="tile" data-cat="exteriors" href="#contact"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-50.jpg" alt="Pool &amp; patio · DFW"><div class="meta"><div class="c">Pool &amp; Patio</div><div class="n">Highland Village · TX</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><picture><source type="image/webp" srcset="assets/work-1-800.webp 800w, assets/work-1.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-1.jpg" alt="1194 Courtland Dr, Frisco — twilight"></picture><div class="meta"><div class="c">Luxury Listing · Twilight</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><picture><source type="image/webp" srcset="assets/work-2-800.webp 800w, assets/work-2.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-2.jpg" alt="Dallas skyline aerial"></picture><div class="meta"><div class="c">Aerial &amp; Drone</div><div class="n">Dallas Skyline</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><picture><source type="image/webp" srcset="assets/work-3-800.webp 800w, assets/work-3.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-3.jpg" alt="7440 Sienna Ridge, Fort Worth — twilight"></picture><div class="meta"><div class="c">Twilight</div><div class="n">7440 Sienna Ridge · Fort Worth</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-4-800.webp 800w, assets/work-4.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-4.jpg" alt="Rocky Branch, Dallas — interiors"></picture><div class="meta"><div class="c">Interiors &amp; Staging</div><div class="n">Rocky Branch · Dallas</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><picture><source type="image/webp" srcset="assets/work-5-800.webp 800w, assets/work-5.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-5.jpg" alt="906 Greenbriar, Duncanville — pool twilight"></picture><div class="meta"><div class="c">Pool &amp; Twilight</div><div class="n">906 Greenbriar · Duncanville</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-6-800.webp 800w, assets/work-6.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-6.jpg" alt="1194 Courtland Dr media room"></picture><div class="meta"><div class="c">Media Room</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><picture><source type="image/webp" srcset="assets/work-7-800.webp 800w, assets/work-7.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-7.jpg" alt="1194 Courtland Dr pool & exterior"></picture><div class="meta"><div class="c">Pool &amp; Exterior</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-8-800.webp 800w, assets/work-8.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-8.jpg" alt="Frisco residence interiors"></picture><div class="meta"><div class="c">Interiors</div><div class="n">Frisco Residence</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><picture><source type="image/webp" srcset="assets/work-9-800.webp 800w, assets/work-9.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-9.jpg" alt="Sienna Ridge, Fort Worth — twilight"></picture><div class="meta"><div class="c">Twilight</div><div class="n">Sienna Ridge · Fort Worth</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><picture><source type="image/webp" srcset="assets/work-10-800.webp 800w, assets/work-10.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-10.jpg" alt="1105 Elmgrove, Keller — twilight"></picture><div class="meta"><div class="c">Twilight</div><div class="n">1105 Elmgrove · Keller</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-11-800.webp 800w, assets/work-11.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-11.jpg" alt="Fort Worth residence interiors"></picture><div class="meta"><div class="c">Interiors</div><div class="n">Fort Worth Residence</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><picture><source type="image/webp" srcset="assets/work-12-800.webp 800w, assets/work-12.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-12.jpg" alt="Yacht Club, Dallas — waterfront twilight"></picture><div class="meta"><div class="c">Waterfront Twilight</div><div class="n">Yacht Club · Dallas</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-13-800.webp 800w, assets/work-13.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-13.jpg" alt="Rocky Branch, Dallas — dining & staging"></picture><div class="meta"><div class="c">Dining &amp; Staging</div><div class="n">Rocky Branch · Dallas</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-14-800.webp 800w, assets/work-14.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-14.jpg" alt="1194 Courtland Dr spa bath"></picture><div class="meta"><div class="c">Spa Bath</div><div class="n">1194 Courtland Dr · Frisco</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><picture><source type="image/webp" srcset="assets/work-21-800.webp 800w, assets/work-21.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-21.jpg" alt="Estate & Pool · DFW"></picture><div class="meta"><div class="c">Aerial</div><div class="n">Estate &amp; Pool · DFW</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><picture><source type="image/webp" srcset="assets/work-23-800.webp 800w, assets/work-23.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-23.jpg" alt="Acreage · DFW"></picture><div class="meta"><div class="c">Aerial</div><div class="n">Acreage · DFW</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><picture><source type="image/webp" srcset="assets/work-33-800.webp 800w, assets/work-33.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-33.jpg" alt="Estate Frontage · DFW"></picture><div class="meta"><div class="c">Exterior</div><div class="n">Estate Frontage · DFW</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><picture><source type="image/webp" srcset="assets/work-34-800.webp 800w, assets/work-34.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-34.jpg" alt="Pool & Covered Patio · DFW"></picture><div class="meta"><div class="c">Pool</div><div class="n">Pool &amp; Covered Patio · DFW</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-35-800.webp 800w, assets/work-35.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-35.jpg" alt="Great Room · DFW"></picture><div class="meta"><div class="c">Interior</div><div class="n">Great Room · DFW</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-36-800.webp 800w, assets/work-36.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-36.jpg" alt="Chef's Kitchen · DFW"></picture><div class="meta"><div class="c">Interior</div><div class="n">Chef's Kitchen · DFW</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-37-800.webp 800w, assets/work-37.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-37.jpg" alt="Primary Suite · DFW"></picture><div class="meta"><div class="c">Interior</div><div class="n">Primary Suite · DFW</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-38-800.webp 800w, assets/work-38.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-38.jpg" alt="Spa Bath · DFW"></picture><div class="meta"><div class="c">Interior</div><div class="n">Spa Bath · DFW</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-39-800.webp 800w, assets/work-39.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-39.jpg" alt="Grand Entrance · DFW"></picture><div class="meta"><div class="c">Interior</div><div class="n">Grand Entrance · DFW</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-40-800.webp 800w, assets/work-40.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-40.jpg" alt="Formal Dining · DFW"></picture><div class="meta"><div class="c">Interior</div><div class="n">Formal Dining · DFW</div></div></a>
+    <a class="tile" data-cat="interiors" href="#contact"><picture><source type="image/webp" srcset="assets/work-41-800.webp 800w, assets/work-41.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-41.jpg" alt="Living Room · DFW"></picture><div class="meta"><div class="c">Interior</div><div class="n">Living Room · DFW</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><picture><source type="image/webp" srcset="assets/work-42-800.webp 800w, assets/work-42.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-42.jpg" alt="Waterfront Patio · DFW"></picture><div class="meta"><div class="c">Waterfront</div><div class="n">Waterfront Patio · DFW</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><picture><source type="image/webp" srcset="assets/work-43-800.webp 800w, assets/work-43.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-43.jpg" alt="Golden-hour aerial, Parker TX"></picture><div class="meta"><div class="c">Aerial · Golden Hour</div><div class="n">Parker · TX</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><picture><source type="image/webp" srcset="assets/work-44-800.webp 800w, assets/work-44.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-44.jpg" alt="Estate aerial · DFW"></picture><div class="meta"><div class="c">Aerial</div><div class="n">Estate &amp; Pool · Highland Village</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><picture><source type="image/webp" srcset="assets/work-45-800.webp 800w, assets/work-45.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-45.jpg" alt="Lakeside aerial · DFW"></picture><div class="meta"><div class="c">Aerial</div><div class="n">Lakeside · Highland Village</div></div></a>
+    <a class="tile" data-cat="aerial" href="#contact"><picture><source type="image/webp" srcset="assets/work-46-800.webp 800w, assets/work-46.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-46.jpg" alt="Overhead aerial · DFW"></picture><div class="meta"><div class="c">Aerial · Overhead</div><div class="n">Murphy · TX</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><picture><source type="image/webp" srcset="assets/work-47-800.webp 800w, assets/work-47.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-47.jpg" alt="Pool &amp; waterfall · DFW"></picture><div class="meta"><div class="c">Pool &amp; Waterfall</div><div class="n">Highland Village · TX</div></div></a>
+    <a class="tile" data-cat="twilight" href="#contact"><picture><source type="image/webp" srcset="assets/work-48-800.webp 800w, assets/work-48.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-48.jpg" alt="Twilight exterior · DFW"></picture><div class="meta"><div class="c">Twilight</div><div class="n">Murphy · TX</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><picture><source type="image/webp" srcset="assets/work-49-800.webp 800w, assets/work-49.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-49.jpg" alt="Front exterior · DFW"></picture><div class="meta"><div class="c">Exterior</div><div class="n">Princeton · TX</div></div></a>
+    <a class="tile" data-cat="exteriors" href="#contact"><picture><source type="image/webp" srcset="assets/work-50-800.webp 800w, assets/work-50.webp 1400w" sizes="(max-width:520px) 100vw, (max-width:980px) 50vw, 25vw"><img loading="lazy" onload="this.classList.add('loaded')" src="assets/work-50.jpg" alt="Pool &amp; patio · DFW"></picture><div class="meta"><div class="c">Pool &amp; Patio</div><div class="n">Highland Village · TX</div></div></a>
   </div>
   <div class="reveal d2" style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;"><button class="btn" id="galmore" type="button">View Full Gallery</button><a class="btn" href="#contact">Request the full portfolio →</a></div>
 </section>
@@ -506,7 +553,7 @@
 
 <!-- WORK / FILMS -->
 <section id="work" class="darker">
-  <div class="sec-head reveal"><div class="kicker">Films &amp; Reels</div><h2>See it in motion.</h2><p>Photos open the door — film walks the buyer through it. Widescreen cinematic films for the listing, vertical reels built to stop the scroll. Tap any frame to play.</p></div>
+  <div class="sec-head reveal"><div class="kicker">04 — Films &amp; Reels</div><h2>See it in motion.</h2><p>Photos open the door — film walks the buyer through it. Widescreen cinematic films for the listing, vertical reels built to stop the scroll. Tap any frame to play.</p></div>
 
   <div id="films" class="films">
     <div class="ytlite r169 reveal" data-id="dPvpCMJWE8A" style="background-image:url('https://i.ytimg.com/vi/dPvpCMJWE8A/maxresdefault.jpg');">
@@ -519,19 +566,38 @@
     </div>
   </div>
 
-  <div class="reveal d1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px;align-items:start;">
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZF_XorhOeg/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZDGEQrAyJl/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DY2APjShE8m/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXQfwiCjeUM/" data-instgrm-version="14" style="margin:0;min-width:0;width:100%;background:#16202C;border:0;"></blockquote>
+  <div class="reels reveal d1">
+    <div class="ytlite r916" data-id="KijvNpvXkVo" data-mp4="assets/reels/reel-1.mp4" style="background-image:url('https://i.ytimg.com/vi/KijvNpvXkVo/maxresdefault.jpg');">
+      <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><div class="s">Penthouse</div><div class="t" style="font-size:14px;">Angel Wright</div></div>
+    </div>
+    <div class="ytlite r916" data-id="yJ6qJhpGeGM" data-mp4="assets/reels/reel-2.mp4" style="background-image:url('https://i.ytimg.com/vi/yJ6qJhpGeGM/maxresdefault.jpg');">
+      <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Connie Segovia</div></div>
+    </div>
+    <div class="ytlite r916" data-id="YLHh6l5yHaU" data-mp4="assets/reels/reel-3.mp4" style="background-image:url('https://i.ytimg.com/vi/YLHh6l5yHaU/maxresdefault.jpg');">
+      <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Rockdale Residence</div></div>
+    </div>
   </div>
   <div class="reveal d2" style="margin-top:28px;"><a class="btn" href="https://www.instagram.com/portaproductions/" target="_blank" rel="noopener">Follow on Instagram</a></div>
-  <script async src="//www.instagram.com/embed.js"></script>
+</section>
+
+<!-- MONTHLY CONTENT ENGINE -->
+<section id="engine">
+  <div class="sec-head reveal"><div class="kicker">For Agents, Builders &amp; Brands</div><h2>The Monthly Content Engine.</h2><p>The agents winning listings right now have one thing in common: they never stop posting. The Content Engine is a monthly partnership that keeps your brand in the feed — recurring shoot days, a steady stream of reels and photography built around you, and priority scheduling the moment a new listing drops.</p></div>
+  <div class="reveal d1" style="display:flex;gap:28px 40px;flex-wrap:wrap;margin:6px 0 30px;">
+    <span style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--platinum);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;"></span>Recurring shoot days</span>
+    <span style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--platinum);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;"></span>Reels, photos &amp; brand films</span>
+    <span style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--platinum);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;"></span>Priority listing turnaround</span>
+    <span style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--platinum);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;"></span>One studio, one plan</span>
+  </div>
+  <div class="reveal d2"><a class="btn" href="#contact" onclick="window.track&&track('content_engine_cta')">Ask about the Content Engine →</a></div>
 </section>
 
 <!-- PROCESS -->
 <section id="process" class="paper">
-  <div class="sec-head reveal"><div class="kicker">03 — How It Works</div><h2>Booked to delivered in days.</h2><p>A simple, collaborative process designed to deliver high-quality content and real business results — every time.</p></div>
+  <div class="sec-head reveal"><div class="kicker">05 — How It Works</div><h2>Booked to delivered in days.</h2><p>A simple, collaborative process designed to deliver high-quality content and real business results — every time.</p></div>
   <div class="steps">
     <div class="step reveal"><div class="no">01</div><h3>Book</h3><p>Tell us the property and goals. We confirm scope, timing, and a shoot date that works for you.</p><div class="tag">Same-day reply</div></div>
     <div class="step reveal d1"><div class="no">02</div><h3>Shoot</h3><p>We arrive on time and capture everything — interiors, exteriors, aerials, and social clips.</p><div class="tag">On location</div></div>
@@ -542,7 +608,7 @@
 
 <!-- WHY -->
 <section id="why">
-  <div class="sec-head reveal"><div class="kicker">04 — Why Porta</div><h2>More visibility. More trust. More sales.</h2><p>We didn't start this just to take photos. We started it because great marketing, done right, wins more business — and we treat every listing like our reputation is on the line.</p></div>
+  <div class="sec-head reveal"><div class="kicker">06 — Why Porta</div><h2>More visibility. More trust. More sales.</h2><p>We didn't start this just to take photos. We started it because great marketing, done right, wins more business — and we treat every listing like our reputation is on the line.</p></div>
   <div class="why-grid">
     <div class="why reveal"><img class="wph" src="assets/why1.jpg?v=4" alt="Ariel filming a luxury interior on a Sony A7S III gimbal rig" width="900" height="506" loading="lazy"><div class="tx"><h3>Cinematic by Default</h3><p>A background in music-video production means every project gets a director's eye — not just a checklist.</p></div></div>
     <div class="why reveal d1"><img class="wph" src="assets/why2.jpg?v=4" alt="Ariel reviewing footage on the camera screen during a shoot" width="900" height="506" loading="lazy"><div class="tx"><h3>24–72 Hour Turnaround</h3><p>Listings move fast. We deliver polished content on time, every time, so you never lose momentum.</p></div></div>
@@ -557,7 +623,7 @@
 <section id="about" class="paper">
   <div class="about-wrap">
     <div class="reveal">
-      <div class="kicker">05 — Our Story</div>
+      <div class="kicker">07 — Our Story</div>
       <h2 style="margin:14px 0 22px;">Built on storytelling.</h2>
       <p style="margin-bottom:14px;">Porta Productions began with a simple belief: every property, brand, and business has a story worth telling beautifully. With a background in music-video production and a relentless eye for detail, founder Ariel Porta turned that passion into a studio dedicated to cinematic real estate and brand media.</p>
       <p style="margin-bottom:14px;">We craft high-quality, engaging content that helps realtors, builders, and entrepreneurs stand out — work that doesn't just capture moments, but inspires action and leaves a lasting impression.</p>
@@ -578,7 +644,7 @@
 
 <!-- REVIEWS -->
 <section id="reviews" class="darker">
-  <div class="sec-head reveal"><div class="kicker">06 — What Clients Say</div><h2>Trusted by people who sell.</h2><p>A perfect <em>5.0★</em> rating across 14 Google reviews.</p></div>
+  <div class="sec-head reveal"><div class="kicker">08 — What Clients Say</div><h2>Trusted by people who sell.</h2><p>A perfect <em>5.0★</em> rating across 14 Google reviews.</p></div>
   <div class="rev-grid">
     <div class="quote reveal"><p>“Porta Productions absolutely exceeded my expectations. Ariel created a professional bio video for my real estate business, and the response has been incredible — so many compliments on the quality, the storytelling, and how authentically it represents who I am.”</p><div class="by">Brittani Darby · Agent, DFW</div></div>
     <div class="quote reveal d1"><p>“Ariel is fantastic! Wonderful communication, quick turnaround, and beautiful images my sellers have always been so happy with. He's very detail-oriented and takes his time to capture my listings in their best light. Truly love partnering with him!”</p><div class="by">Hannah Petty · Realtor, DFW</div></div>
@@ -593,7 +659,7 @@
 <!-- BROKERAGES -->
 <section id="brokerages" class="paper" style="text-align:center;">
   <div class="kicker reveal" style="text-align:center;">Trusted Across DFW</div>
-  <h2 class="reveal d1" style="margin:14px auto 38px;max-width:20ch;">Brokerages I've worked with.</h2>
+  <h2 class="reveal d1" style="margin:14px auto 38px;max-width:20ch;">Brokerages we've worked with.</h2>
   <div class="bk reveal d2">
     <div class="bk-track">
       <span class="bk-item">Compass</span><span class="bk-sep"></span>
@@ -654,7 +720,7 @@
 <section id="contact" class="darker">
   <div class="contact-wrap">
     <div class="contact-info reveal">
-      <div class="kicker">07 — Get in Touch</div>
+      <div class="kicker">09 — Get in Touch</div>
       <h2 style="margin:14px 0 26px;max-width:14ch;">Let's start a project.</h2>
       <p style="margin-bottom:30px;">Based in Dallas–Fort Worth and available to travel nationwide. Tell us about your property or brand and we'll get right back to you — usually the same day.</p>
       <div class="line"><span class="l">Email</span><a class="v" href="mailto:ariel@porta.productions">ariel@porta.productions</a></div>
@@ -665,17 +731,17 @@
     <form class="reveal d1" id="inquiry" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="inquiry">
       <p class="full" hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
-      <input class="" type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone">
-      <input type="text" name="company" placeholder="Brokerage / Company">
-      <input class="full" type="text" name="address" placeholder="Property Address">
-      <select class="full" name="service">
+      <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name" required>
+      <input type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
+      <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" autocomplete="tel">
+      <input type="text" name="company" placeholder="Brokerage / Company" aria-label="Brokerage or company" autocomplete="organization">
+      <input class="full" type="text" name="address" placeholder="Property Address" aria-label="Property address" autocomplete="off">
+      <select class="full" name="service" aria-label="Service needed">
         <option value="">Service Needed…</option>
         <option>Cinematic Listing Film</option><option>HDR Listing Photos</option><option>Social Reels</option>
         <option>Aerial / Drone</option><option>3D Tour / Floor Plan</option><option>Brand / Agent Film</option><option>Monthly Content Engine</option>
       </select>
-      <textarea class="full" name="message" placeholder="Tell us about your project"></textarea>
+      <textarea class="full" name="message" placeholder="Tell us about your project" aria-label="Tell us about your project"></textarea>
       <div class="full"><button class="btn solid" type="submit">Send Inquiry</button> <span id="formnote" style="font-size:11px;letter-spacing:.1em;color:var(--silver);margin-left:14px;"></span></div>
     </form>
   </div>
@@ -687,7 +753,7 @@
       <a class="brand" href="#top" style="margin-bottom:8px;"><svg width="22" height="17" viewBox="219 116 62 50" fill="none"><path fill="#C8CDD3" d="M222.0 143.5 L225.6 146.1 L225.6 128.6 L259.6 128.6 C261.5 128.6 263.0 128.2 264.0 127.4 C265.0 126.5 265.6 125.4 265.6 124.1 C265.6 122.7 265.0 121.6 264.0 120.8 C263.0 120.0 261.5 119.6 259.6 119.6 L225.6 119.6 L222.0 124.1 Z"/><path fill="#8A9098" d="M272.7 134.7 C271.1 135.9 269.0 136.9 266.6 137.6 C264.2 138.3 261.5 138.7 258.4 138.7 L237.8 138.7 L237.8 154.7 L249.7 163.2 L277.3 143.5 L277.3 128.1 C277.1 128.8 276.9 129.5 276.5 130.1 C275.7 131.9 274.4 133.4 272.7 134.7 Z"/></svg><span class="wm">PORTA<i class="subwm">Productions</i></span></a>
       <div class="blurb">Turning ideas into cinematic experiences. Premium real estate &amp; brand media, Dallas–Fort Worth &amp; nationwide.</div>
     </div>
-    <div><h5>Services</h5><a href="#services">Listing Films</a><a href="#services">Photography</a><a href="#services">Aerial &amp; Drone</a><a href="#services">3D Tours</a></div>
+    <div><h5>Services</h5><a href="#services">Listing Films</a><a href="#services">Photography</a><a href="#services">Aerial &amp; Drone</a><a href="#services">3D Tours</a><a href="#engine">Monthly Content Engine</a></div>
     <div><h5>Studio</h5><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#reviews">Reviews</a></div>
     <div><h5>Service Areas</h5><a href="dallas/">Dallas</a><a href="fort-worth/">Fort Worth</a><a href="frisco/">Frisco</a><a href="plano/">Plano</a><a href="mckinney/">McKinney</a></div>
   </div>
@@ -698,6 +764,15 @@
 </footer>
 
 <a class="toplink" id="toplink" href="#top">↑</a>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img id="lb-img" src="" alt="">
+  <div class="lb-cap"><div class="c" id="lb-cat"></div><div class="n" id="lb-name"></div><a class="book" href="#contact" id="lb-book">Book this look →</a></div>
+  <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+  <button class="lb-prev" id="lb-prev" aria-label="Previous photo">‹</button>
+  <button class="lb-next" id="lb-next" aria-label="Next photo">›</button>
+</div>
 
 <script>
   // ensure hero video autoplays (muted autoplay can need a nudge)
@@ -713,7 +788,8 @@
 
   // mobile menu
   var burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
-  burger.addEventListener('click',function(){var open=navlinks.classList.toggle('open');document.body.classList.toggle('menu-open',open);});
+  burger.setAttribute('aria-expanded','false');
+  burger.addEventListener('click',function(){var open=navlinks.classList.toggle('open');document.body.classList.toggle('menu-open',open);burger.setAttribute('aria-expanded',open?'true':'false');});
   navlinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navlinks.classList.remove('open');document.body.classList.remove('menu-open');});});
 
   // sticky header + toplink
@@ -735,8 +811,14 @@
       el.querySelector('.play').style.display='none';
       var c=el.querySelector('.cap'); if(c)c.style.display='none';
       el.appendChild(f);
+      window.track&&track('play_film',{video_id:el.getAttribute('data-id')});
     });
   });
+
+  // conversion micro-events
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(){window.track&&track('contact_phone');});});
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener('click',function(){window.track&&track('contact_email');});});
+  document.querySelectorAll('a[href*="aryeo.com"]').forEach(function(a){a.addEventListener('click',function(){window.track&&track('order_online_click');});});
 
   // reveal
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.14});
@@ -750,7 +832,9 @@
   });
 
   // gallery filter
-  function expandGallery(){var g=document.querySelector('.gal');if(g)g.classList.remove('collapsed');var gm=document.getElementById('galmore');if(gm)gm.style.display='none';}
+  function expandGallery(){var g=document.querySelector('.gal');if(g)g.classList.remove('collapsed');var gm=document.getElementById('galmore');if(gm)gm.style.display='none';
+    // kick off loading for tiles that were hidden (display:none defers native lazy-load)
+    document.querySelectorAll('.gal .tile img[loading]').forEach(function(im){im.setAttribute('loading','eager');});}
   var _gm=document.getElementById('galmore'); if(_gm) _gm.addEventListener('click',expandGallery);
   document.querySelectorAll('.filterbar button').forEach(function(b){
     b.addEventListener('click',function(){
@@ -764,15 +848,62 @@
     });
   });
 
-  // gallery tile click -> show the rest of that category (instead of jumping to contact)
-  (function(){var gal=document.querySelector('.gal'); if(!gal)return;
-    gal.addEventListener('click',function(e){var tile=e.target.closest('.tile'); if(!tile)return; e.preventDefault();
-      var cat=tile.getAttribute('data-cat');
-      var btn=document.querySelector('.filterbar button[data-filter="'+cat+'"]')||document.querySelector('.filterbar button[data-filter="all"]');
-      if(btn)btn.click();
-      var sec=document.getElementById('gallery'); if(sec)sec.scrollIntoView({behavior:'smooth'});
+  // gallery tile click -> lightbox
+  (function(){
+    var gal=document.querySelector('.gal'); if(!gal)return;
+    var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),
+        lbCat=document.getElementById('lb-cat'),lbName=document.getElementById('lb-name'),
+        lastFocus=null,idx=0;
+    function visibleTiles(){return Array.prototype.filter.call(gal.querySelectorAll('.tile'),function(t){return !t.classList.contains('hide');});}
+    function show(i){
+      var tiles=visibleTiles(); if(!tiles.length)return;
+      idx=(i+tiles.length)%tiles.length;
+      var t=tiles[idx],im=t.querySelector('img'),meta=t.querySelector('.meta');
+      lbImg.src=im.currentSrc||im.src; lbImg.alt=im.alt;
+      lbCat.textContent=meta?meta.querySelector('.c').textContent:'';
+      lbName.textContent=meta?meta.querySelector('.n').textContent:'';
+      // preload neighbors
+      [idx+1,idx-1].forEach(function(n){var nt=tiles[(n+tiles.length)%tiles.length];if(nt){var ni=new Image();ni.src=nt.querySelector('img').src;}});
+    }
+    function open(i){lastFocus=document.activeElement;show(i);lb.classList.add('open');document.body.style.overflow='hidden';document.getElementById('lb-close').focus();window.track&&track('view_photo',{photo:lbName.textContent});}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';if(lastFocus)lastFocus.focus();}
+    gal.addEventListener('click',function(e){
+      var tile=e.target.closest('.tile'); if(!tile)return; e.preventDefault();
+      open(visibleTiles().indexOf(tile));
     });
+    document.getElementById('lb-close').addEventListener('click',close);
+    document.getElementById('lb-prev').addEventListener('click',function(){show(idx-1);});
+    document.getElementById('lb-next').addEventListener('click',function(){show(idx+1);});
+    document.getElementById('lb-book').addEventListener('click',close);
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowLeft')show(idx-1);
+      else if(e.key==='ArrowRight')show(idx+1);
+    });
+    // swipe on touch
+    var tx=null;
+    lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+    lb.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>48)show(idx+(dx<0?1:-1));tx=null;},{passive:true});
   })();
+
+  // reels: auto-upgrade to self-hosted MP4s when present in assets/reels/ (falls back to YouTube otherwise)
+  document.querySelectorAll('.ytlite[data-mp4]').forEach(function(el){
+    fetch(el.getAttribute('data-mp4'),{method:'HEAD'}).then(function(r){
+      if(!r.ok)return; // keep YouTube facade
+      el.dataset.selfHosted='1';
+      el.addEventListener('click',function(){
+        if(el.dataset.loaded)return; el.dataset.loaded='1';
+        var v=document.createElement('video');
+        v.src=el.getAttribute('data-mp4'); v.controls=true; v.playsInline=true; v.autoplay=true;
+        el.querySelector('.play').style.display='none';
+        var c=el.querySelector('.cap'); if(c)c.style.display='none';
+        el.appendChild(v);
+        window.track&&track('play_reel',{reel:el.getAttribute('data-mp4')});
+      },true);
+    }).catch(function(){});
+  });
 
   // count-up
   function runCount(el){var to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||'0'),t0=null,dur=1300;
@@ -788,10 +919,11 @@
 
   // faq
   document.querySelectorAll('.qa button').forEach(function(b){
+    b.setAttribute('aria-expanded','false');
     b.addEventListener('click',function(){
       var qa=b.parentElement,ans=qa.querySelector('.ans'),open=qa.classList.contains('open');
-      document.querySelectorAll('.qa').forEach(function(o){o.classList.remove('open');o.querySelector('.ans').style.maxHeight=null;});
-      if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+      document.querySelectorAll('.qa').forEach(function(o){o.classList.remove('open');o.querySelector('.ans').style.maxHeight=null;o.querySelector('button').setAttribute('aria-expanded','false');});
+      if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';b.setAttribute('aria-expanded','true');}
     });
   });
 
@@ -808,7 +940,8 @@
         body:new URLSearchParams(new FormData(form)).toString()})
       .then(function(r){if(!r.ok)throw new Error(r.status);
         form.reset();note.style.color='#9AA0A7';
-        note.textContent='Thank you — your inquiry is in. We’ll reply shortly, usually the same day.';})
+        note.textContent='Thank you — your inquiry is in. We’ll reply shortly, usually the same day.';
+        window.track&&track('generate_lead',{method:'inquiry_form'});})
       .catch(function(){note.style.color='#C98B7A';
         note.textContent='Something went wrong — please email ariel@porta.productions directly.';})
       .finally(function(){btn.disabled=false;});
