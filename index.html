@@ -25,7 +25,11 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "ProfessionalService"],
+  "@type": [
+    "LocalBusiness",
+    "ProfessionalService"
+  ],
+  "@id": "https://portaproductions.com/#business",
   "name": "Porta Productions",
   "description": "Dallas–Fort Worth's premium real estate & brand media studio — cinematic listing films, HDR & aerial photography, social reels, 3D tours, virtual staging and twilight, with 24–72 hour delivery.",
   "url": "https://portaproductions.com/",
@@ -40,14 +44,35 @@
     "addressCountry": "US"
   },
   "areaServed": [
-    { "@type": "City", "name": "Dallas" },
-    { "@type": "City", "name": "Fort Worth" },
-    { "@type": "City", "name": "Frisco" },
-    { "@type": "City", "name": "Plano" },
-    { "@type": "City", "name": "McKinney" },
-    { "@type": "AdministrativeArea", "name": "Dallas–Fort Worth Metroplex" }
+    {
+      "@type": "City",
+      "name": "Dallas"
+    },
+    {
+      "@type": "City",
+      "name": "Fort Worth"
+    },
+    {
+      "@type": "City",
+      "name": "Frisco"
+    },
+    {
+      "@type": "City",
+      "name": "Plano"
+    },
+    {
+      "@type": "City",
+      "name": "McKinney"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Dallas–Fort Worth Metroplex"
+    }
   ],
-  "founder": { "@type": "Person", "name": "Ariel Porta" },
+  "founder": {
+    "@type": "Person",
+    "name": "Ariel Porta"
+  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
@@ -58,7 +83,128 @@
     "https://www.instagram.com/portaproductions/",
     "https://www.facebook.com/portaproductions",
     "https://www.google.com/maps?cid=544680391947146140"
-  ]
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Real Estate & Brand Media Services",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Video",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cinematic Listing Films"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Social Reels"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Agent & Brand Films"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Aerial / Drone Video"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Photography",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "HDR Listing Photos"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Architectural Photography"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Twilight Photography"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Aerial Stills"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Signature Add-Ons",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Zillow 3D Tours"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "2D Floor Plans"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Virtual Staging"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Twilight / Golden Hour Photography"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Retainer",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Monthly Content Engine"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -73,6 +219,32 @@
     {"@type":"Question","name":"Who owns the final content?","acceptedAnswer":{"@type":"Answer","text":"You receive full digital usage rights to market the property or brand. Porta Productions retains the right to use clips for portfolio and promotion unless we agree otherwise in writing."}},
     {"@type":"Question","name":"How do I book?","acceptedAnswer":{"@type":"Answer","text":"Use the form on our site or email us with the property address, services you need, and your timeline. We'll confirm scope, timing, and a shoot date — usually the same day."}}
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://portaproductions.com/#website",
+  "name": "Porta Productions",
+  "url": "https://portaproductions.com/",
+  "publisher": {
+    "@id": "https://portaproductions.com/#business"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Arlette Porta · Agent Brand Film",
+  "description": "A cinematic agent brand film by Porta Productions — story-first brand video for a Dallas–Fort Worth real estate agent.",
+  "thumbnailUrl": "https://portaproductions.com/assets/films/arlette-brand-film-poster.jpg",
+  "contentUrl": "https://portaproductions.com/assets/films/arlette-brand-film.mp4",
+  "uploadDate": "2026-07-16",
+  "publisher": {
+    "@id": "https://portaproductions.com/#business"
+  }
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
