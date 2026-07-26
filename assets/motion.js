@@ -162,9 +162,11 @@
     de.classList.add('mnx');                            /* ---- write pass --- */
     for (i = 0; i < hit.length; i++) force(hit[i]);
     pending = pending.filter(function (n) { return n.mPend; });
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () { de.classList.remove('mnx'); });
-    });
+    /* same rAF caveat as the reveal: in a background tab the frame never comes
+       and transitions would stay disabled, so a timer releases it either way */
+    var release = function () { de.classList.remove('mnx'); };
+    requestAnimationFrame(function () { requestAnimationFrame(release); });
+    setTimeout(release, 120);
   }
   function jumped() { revealTo((W.pageYOffset || 0) + W.innerHeight * 1.25); }
   function watch(list, cb, th) {
@@ -675,6 +677,27 @@
     var wantsBox = cine && !location.hash && !store('pp_lbx');
     function heroIn() { if (h1 && cine) play(h1, 0); kick(); }
 
+    /* Making the page visible must never depend on a single frame callback:
+       requestAnimationFrame is suspended while a tab sits in the background, so
+       a cmd-clicked link or a restored session would render a blank page until
+       it was focused. reveal() is idempotent and fired from a frame, a timer,
+       and the first visibility change — whichever wins, the page comes up. */
+    var revealed = false;
+    function reveal() {
+      if (revealed) return;
+      revealed = true;
+      de.classList.add('mjs-ready');
+      if (h1 && cine) play(h1, 0.2);
+      kick();
+    }
+    function safely(fn, ms) {
+      var done = false;
+      function go() { if (done) return; done = true; fn(); }
+      requestAnimationFrame(go);
+      setTimeout(go, ms);
+      return go;
+    }
+
     if (wantsBox) {
       store('pp_lbx', '1');
       addC('mlbx');
@@ -682,20 +705,19 @@
       box.appendChild(el('i')); box.appendChild(el('b')); box.appendChild(el('i'));
       D.body.appendChild(box);
       de.classList.add('mjs-ready');
-      requestAnimationFrame(function () {
+      revealed = true;
+      safely(function () {
         box.classList.add('mlbx-draw');
         setTimeout(function () {
           box.classList.add('mlbx-open');
           setTimeout(heroIn, 260);
           setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 1200);
         }, 480);
-      });
+      }, 120);
     } else {
-      requestAnimationFrame(function () {
-        de.classList.add('mjs-ready');
-        if (h1 && cine) play(h1, 0.2);
-        kick();
-      });
+      requestAnimationFrame(reveal);
+      setTimeout(reveal, 120);
+      D.addEventListener('visibilitychange', reveal, { once: true });
     }
 
     /* ------------------------------------------------------------ A5
