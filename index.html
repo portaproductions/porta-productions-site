@@ -263,11 +263,11 @@
 </script>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap" media="print" onload="this.media='all';this.onload=null">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap"></noscript>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap"></noscript>
 <style>
   :root{
     --navy:#121A25;--navy-2:#0E141C;--navy-3:#090D13;
-    --steel:#414851;--silver:#71767C;--platinum:#A0A3A8;
+    --steel:#414851;--silver:#7C828A;--platinum:#A0A3A8;
     --paper:#F5F6F7;--paper-2:#E7E9EC;--accent:#9AA0A7;--hi:#C8CDD3;
     --line:rgba(244,240,233,.13);--line-d:rgba(27,26,23,.12);
     --caps:"Cinzel",serif;--serif:"Cormorant Garamond",serif;--sans:"Lato",sans-serif;
@@ -388,6 +388,7 @@
   @media(max-width:980px){.films{grid-template-columns:1fr;}}
   .reels{display:grid;grid-template-columns:repeat(3,minmax(0,300px));justify-content:center;gap:16px;margin-top:24px;}
   @media(max-width:980px){.reels{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  .ytlite .yt-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .ytlite video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;background:#000;}
   .ytlite{position:relative;cursor:pointer;background-size:cover;background-position:center;overflow:hidden;border:0;transition:transform .5s,box-shadow .5s;background-color:#16202C;}
   .ytlite:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);}
@@ -405,8 +406,10 @@
   .addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:34px;}
   @media(max-width:820px){.addon-grid{grid-template-columns:1fr;}}
   .addon{border:1px solid var(--line);background:#16202C;overflow:hidden;display:flex;flex-direction:column;}
-  .addon-img{aspect-ratio:3/2;background-size:cover;background-position:center;position:relative;}
-  .addon-fp{background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#F4F1EA;}
+  .addon-img{aspect-ratio:3/2;position:relative;overflow:hidden;}
+  .addon-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .addon-fp img{object-fit:contain;}
+  .addon-fp{background-color:#F4F1EA;}
   .addon-badge{position:absolute;top:14px;left:14px;font-family:var(--sans);font-weight:400;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:rgba(14,20,28,.7);border:1px solid rgba(255,255,255,.28);padding:6px 12px;}
   .addon-tx{padding:20px 22px;}
   .addon-tx h3{font-family:var(--serif);font-weight:500;font-size:23px;color:#fff;margin:0 0 8px;}
@@ -516,7 +519,7 @@
   footer{background:var(--navy-3);padding:64px var(--pad) 30px;}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;border-bottom:1px solid var(--line);padding-bottom:40px;}
   @media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;gap:30px;}}
-  .foot-grid h5{font-family:var(--sans);font-weight:300;letter-spacing:.24em;text-transform:uppercase;font-size:10px;color:var(--accent);margin-bottom:16px;}
+  .foot-grid h3{font-family:var(--sans);font-weight:300;letter-spacing:.24em;text-transform:uppercase;font-size:10px;color:var(--accent);margin-bottom:16px;}
   .foot-grid a{display:block;font-size:13px;color:var(--platinum);margin-bottom:9px;transition:.3s;}
   .foot-grid a:hover{color:#fff;}
   .foot-grid .blurb{font-size:13px;color:var(--silver);max-width:34ch;margin-top:14px;}
@@ -709,15 +712,15 @@
   <div class="sec-head reveal"><div class="kicker">03 — Signature Add-Ons</div><h2>The finishing touch.</h2><p>The extras that turn a great listing into a complete one — here's exactly what each one looks like.</p></div>
   <div class="addon-grid">
     <div class="addon reveal">
-      <div class="addon-img" style="background-image:url('assets/finish-3dtour-v2.jpg')"></div>
+      <div class="addon-img"><img src="assets/finish-3dtour-v2.jpg" alt="3D virtual tour walkthrough of a listing" loading="lazy" decoding="async"></div>
       <div class="addon-tx"><h3>Zillow 3D Tours</h3><p>An interactive, room-to-room walkthrough hosted right on the Zillow listing — the real Zillow 3D Home, not Matterport.</p></div>
     </div>
     <div class="addon reveal d1">
-      <div class="addon-img addon-fp" style="background-image:url('assets/finish-floorplan-branded.jpg')"></div>
+      <div class="addon-img addon-fp"><img src="assets/finish-floorplan-branded.jpg" alt="Branded 2D floor plan" loading="lazy" decoding="async"></div>
       <div class="addon-tx"><h3>2D Floor Plans</h3><p>A clean, measured layout so buyers instantly grasp the flow — included free with every photo package.</p></div>
     </div>
     <div class="addon reveal d2">
-      <div class="addon-img" style="background-image:url('assets/work-13.jpg')"><span class="addon-badge">Virtually Staged</span></div>
+      <div class="addon-img"><img src="assets/work-13.jpg" alt="Virtually staged living room" loading="lazy" decoding="async"><span class="addon-badge">Virtually Staged</span></div>
       <div class="addon-tx"><h3>Virtual Staging</h3><p>Empty rooms digitally furnished so buyers can picture living there — gorgeous, at a fraction of physical staging.</p></div>
     </div>
     <div class="addon reveal d3">
@@ -739,30 +742,36 @@
   <div class="sec-head reveal"><div class="kicker">04 — Films &amp; Reels</div><h2>See it in motion.</h2><p>Photos open the door — film walks the buyer through it. Widescreen cinematic films for the listing, vertical reels built to stop the scroll. Tap any frame to play.</p></div>
 
   <div id="films" class="films">
-    <div class="ytlite r169 reveal" data-id="dPvpCMJWE8A" style="background-image:url('https://i.ytimg.com/vi/dPvpCMJWE8A/maxresdefault.jpg');">
+    <div class="ytlite r169 reveal" data-id="dPvpCMJWE8A">
+      <img class="yt-thumb" src="https://i.ytimg.com/vi/dPvpCMJWE8A/maxresdefault.jpg" alt="Featured film — New Leaf Custom Home luxury estate" loading="lazy" decoding="async">
       <div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Featured Film · Luxury Estate</div><div class="t">New Leaf Custom Home</div></div>
     </div>
-    <div class="ytlite r169 reveal d2" data-id="-PvukHfp5Hk" style="background-image:url('https://i.ytimg.com/vi/-PvukHfp5Hk/maxresdefault.jpg');">
+    <div class="ytlite r169 reveal d2" data-id="-PvukHfp5Hk">
+      <img class="yt-thumb" src="https://i.ytimg.com/vi/-PvukHfp5Hk/maxresdefault.jpg" alt="Agent brand film — Connie Segovia" loading="lazy" decoding="async">
       <div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Agent Brand Film</div><div class="t">Connie Segovia · Real Estate</div></div>
     </div>
-    <div class="ytlite r169 reveal d1" data-mp4="assets/films/arlette-brand-film.mp4" style="background-image:url('assets/films/arlette-brand-film-poster.jpg');">
+    <div class="ytlite r169 reveal d1" data-mp4="assets/films/arlette-brand-film.mp4">
+      <img class="yt-thumb" src="assets/films/arlette-brand-film-poster.jpg" alt="Agent brand film — Arlette Porta" loading="lazy" decoding="async">
       <div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Agent Brand Film</div><div class="t">Arlette Porta · Real Estate</div></div>
     </div>
   </div>
 
   <div class="reels reveal d1">
-    <div class="ytlite r916" data-id="KijvNpvXkVo" data-mp4="assets/reels/reel-1.mp4" style="background-image:url('https://i.ytimg.com/vi/KijvNpvXkVo/maxresdefault.jpg');">
+    <div class="ytlite r916" data-id="KijvNpvXkVo" data-mp4="assets/reels/reel-1.mp4">
+      <img class="yt-thumb" src="https://i.ytimg.com/vi/KijvNpvXkVo/maxresdefault.jpg" alt="Penthouse listing reel — Angel Wright" loading="lazy" decoding="async">
       <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Penthouse</div><div class="t" style="font-size:14px;">Angel Wright</div></div>
     </div>
-    <div class="ytlite r916" data-id="yJ6qJhpGeGM" data-mp4="assets/reels/reel-2.mp4" style="background-image:url('https://i.ytimg.com/vi/yJ6qJhpGeGM/maxresdefault.jpg');">
+    <div class="ytlite r916" data-id="yJ6qJhpGeGM" data-mp4="assets/reels/reel-2.mp4">
+      <img class="yt-thumb" src="https://i.ytimg.com/vi/yJ6qJhpGeGM/maxresdefault.jpg" alt="Listing reel — Connie Segovia" loading="lazy" decoding="async">
       <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Connie Segovia</div></div>
     </div>
-    <div class="ytlite r916" data-id="YLHh6l5yHaU" data-mp4="assets/reels/reel-3.mp4" style="background-image:url('https://i.ytimg.com/vi/YLHh6l5yHaU/maxresdefault.jpg');">
+    <div class="ytlite r916" data-id="YLHh6l5yHaU" data-mp4="assets/reels/reel-3.mp4">
+      <img class="yt-thumb" src="https://i.ytimg.com/vi/YLHh6l5yHaU/maxresdefault.jpg" alt="Listing reel — Rockdale Residence" loading="lazy" decoding="async">
       <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Rockdale Residence</div></div>
     </div>
@@ -940,9 +949,9 @@
       <a class="brand" href="#top" style="margin-bottom:8px;"><svg width="22" height="17" viewBox="219 116 62 50" fill="none"><path fill="#C8CDD3" d="M222.0 143.5 L225.6 146.1 L225.6 128.6 L259.6 128.6 C261.5 128.6 263.0 128.2 264.0 127.4 C265.0 126.5 265.6 125.4 265.6 124.1 C265.6 122.7 265.0 121.6 264.0 120.8 C263.0 120.0 261.5 119.6 259.6 119.6 L225.6 119.6 L222.0 124.1 Z"/><path fill="#8A9098" d="M272.7 134.7 C271.1 135.9 269.0 136.9 266.6 137.6 C264.2 138.3 261.5 138.7 258.4 138.7 L237.8 138.7 L237.8 154.7 L249.7 163.2 L277.3 143.5 L277.3 128.1 C277.1 128.8 276.9 129.5 276.5 130.1 C275.7 131.9 274.4 133.4 272.7 134.7 Z"/></svg><span class="wm">PORTA<i class="subwm">Productions</i></span></a>
       <div class="blurb">Turning ideas into cinematic experiences. Premium real estate &amp; brand media, Dallas–Fort Worth &amp; nationwide.</div>
     </div>
-    <div><h5>Services</h5><a href="#services">Listing Films</a><a href="#services">Photography</a><a href="#services">Aerial &amp; Drone</a><a href="#services">3D Tours</a><a href="#engine">Monthly Content Engine</a></div>
-    <div><h5>Studio</h5><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#reviews">Reviews</a></div>
-    <div><h5>Service Areas</h5><a href="dallas/">Dallas</a><a href="fort-worth/">Fort Worth</a><a href="frisco/">Frisco</a><a href="plano/">Plano</a><a href="mckinney/">McKinney</a></div>
+    <div><h3>Services</h3><a href="#services">Listing Films</a><a href="#services">Photography</a><a href="#services">Aerial &amp; Drone</a><a href="#services">3D Tours</a><a href="#engine">Monthly Content Engine</a></div>
+    <div><h3>Studio</h3><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#reviews">Reviews</a></div>
+    <div><h3>Service Areas</h3><a href="dallas/">Dallas</a><a href="fort-worth/">Fort Worth</a><a href="frisco/">Frisco</a><a href="plano/">Plano</a><a href="mckinney/">McKinney</a></div>
   </div>
   <div class="foot-bottom">
     <span>© 2026 Porta Productions. All rights reserved.</span>
@@ -1095,22 +1104,7 @@
     lb.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>48)show(idx+(dx<0?1:-1));tx=null;},{passive:true});
   })();
 
-  // reels: auto-upgrade to self-hosted MP4s when present in assets/reels/ (falls back to YouTube otherwise)
-  document.querySelectorAll('.ytlite[data-mp4]').forEach(function(el){
-    fetch(el.getAttribute('data-mp4'),{method:'HEAD'}).then(function(r){
-      if(!r.ok)return; // keep YouTube facade
-      el.dataset.selfHosted='1';
-      el.addEventListener('click',function(){
-        if(el.dataset.loaded)return; el.dataset.loaded='1';
-        var v=document.createElement('video');
-        v.src=el.getAttribute('data-mp4'); v.controls=true; v.playsInline=true; v.autoplay=true;
-        el.querySelector('.play').style.display='none';
-        var c=el.querySelector('.cap'); if(c)c.style.display='none';
-        el.appendChild(v);
-        window.track&&track('play_reel',{reel:el.getAttribute('data-mp4')});
-      },true);
-    }).catch(function(){});
-  });
+  // reels: self-hosted MP4 upgrade removed until the files exist in assets/reels/ (the HEAD probe logged three 404s on every load)
 
   // count-up
   function runCount(el){var to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||'0'),t0=null,dur=1300;
