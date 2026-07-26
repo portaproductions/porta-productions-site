@@ -1,4 +1,4 @@
-/* Porta Productions — cinematic motion layer (v2).
+/* Porta Productions — cinematic motion layer (v3).
    Sections A…F map to the base pass; G-series is the "all-out" layer.
    Every hidden/offset state is scoped under html.mjs, which motion.js sets only
    when it can animate. No JS -> no .mjs -> page renders fully visible. */
@@ -10,8 +10,16 @@
 
 /* A1 · page-load curtain (skipped when the G1 letterbox plays instead) */
 html.mjs body{opacity:0;}
-html.mjs.mjs-ready body{opacity:1;transition:opacity .7s var(--m1);}
+html.mjs.mjs-ready body{opacity:1;transition:opacity .45s var(--m1);}
 html.mjs.mlbx body{opacity:1;transition:none;}
+
+/* A1b · jump arrival. Held for a single frame while revealTo() force-shows
+   everything above the fold, so a deep link lands on a finished page. Scoped
+   to what this layer animates rather than `*`, which would recalc the world. */
+html.mjs.mnx .reveal,html.mjs.mnx .mli,html.mjs.mnx .mrule,html.mjs.mnx .mclip,
+html.mjs.mnx .mwipe,html.mjs.mnx .kicker,html.mjs.mnx .steps .step::before,
+html.mjs.mnx #hero .mhi,html.mjs.mnx #hero .mhs{
+  transition-duration:0s!important;transition-delay:0s!important;}
 
 /* A2 · scroll progress hairline */
 .mprog{position:fixed;top:0;left:0;right:0;height:2px;z-index:110;pointer-events:none;
@@ -43,14 +51,14 @@ html.mjs.mlbx body{opacity:1;transition:none;}
 
 /* B0 · baseline reveal (pages without their own .reveal rule) */
 .mjs .reveal{opacity:0;transform:translateY(20px);
-  transition:opacity .7s var(--m1),transform .7s var(--m1);}
+  transition:opacity .5s var(--m1),transform .5s var(--m1);}
 .mjs .reveal.in{opacity:1;transform:none;}
 
 /* B1 · headline line-mask reveal */
 .mjs .ml{display:inline-block;overflow:hidden;vertical-align:bottom;
   padding-bottom:.16em;margin-bottom:-.16em;}
 .mjs .mli{display:inline-block;transform:translateY(112%) rotate(.5deg);opacity:0;
-  transition:transform .9s var(--m2),opacity .9s var(--m2);will-change:transform;}
+  transition:transform .6s var(--m2),opacity .6s var(--m2);will-change:transform;}
 .mjs .m-in .mli{transform:none;opacity:1;}
 
 /* B2 · kicker tracking-in (initial state set inline by motion.js) */
@@ -68,6 +76,12 @@ html.mjs.mlbx body{opacity:1;transition:none;}
 .mjs #hero .mhi{opacity:0;transform:translateY(20px);
   transition:opacity 1s var(--m2),transform 1.1s var(--m2);}
 .mjs.mjs-ready #hero .mhi{opacity:1;transform:none;}
+
+/* C1b · static-image hero (the city pages). Legible at first paint — this is
+   a settle, not an entrance. Never opacity 0: these are landing pages. */
+.mjs #hero .mhs{opacity:.95;transform:translateY(7px);
+  transition:opacity .45s var(--m1),transform .55s var(--m1);}
+.mjs.mjs-ready #hero .mhs{opacity:1;transform:none;}
 
 /* C2 · slow drift (Ken Burns). --py comes from the rAF loop (C3); keyframes
    re-read it each frame so drift and parallax never fight over `transform`. */
@@ -192,7 +206,13 @@ html.mjs.mlbx body{opacity:1;transition:none;}
 
 /* G4 · curtain wipe — a solid panel slides off the frame */
 .mwipe{position:absolute;inset:0;z-index:3;pointer-events:none;background:#090D13;
-  transform:translateY(0);transition:transform .95s var(--m2);}
+  transform:translateY(0);transition:transform .7s var(--m2);}
+/* Gallery tiles past the eighth have no curtain, so a lazy image that hasn't
+   decoded leaves an empty box. A ground tone makes that read as loading rather
+   than broken. Curtained hosts are deliberately excluded: they already have an
+   opaque panel, and one of them parallaxes its image every frame. */
+.mjs .gal .tile{background-color:#1A2432;}
+.mjs .paper .gal .tile{background-color:#E2E5E9;}
 .paper .mwipe{background:#E7E9EC;}
 .mwipe.mwipe-go{transform:translateY(-101%);}
 
@@ -289,7 +309,7 @@ html.mjs body.mout{opacity:0;transition:opacity .32s var(--m1);}
   html.mjs body{opacity:1!important;}
   .mgrain,.mcur,.mcurl,.mcue,.mprog,.mrail,.mlbx-wrap,.mwipe{display:none!important;}
   .reveal{opacity:1!important;transform:none!important;}
-  .mjs .ml,.mjs .mli,.mjs .mrule,.mjs #hero .mhi,.mjs .mclip,.mjs .msk{
+  .mjs .ml,.mjs .mli,.mjs .mrule,.mjs #hero .mhi,.mjs #hero .mhs,.mjs .mclip,.mjs .msk{
     opacity:1!important;transform:none!important;clip-path:none!important;letter-spacing:inherit;}
   .mjs .mlit{background-image:none!important;color:inherit!important;-webkit-text-fill-color:currentColor!important;}
   .mjs .mlit *{-webkit-text-fill-color:currentColor!important;}

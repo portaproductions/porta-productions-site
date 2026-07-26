@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Porta Productions — motion.js (v2)
+   Porta Productions — motion.js (v3)
    Cinematic motion layer. A…F is the base pass, G is the all-out layer.
    Vanilla, no deps, single IIFE, no globals. Enhancement only: if this file
    never runs, html never gets .mjs and the page renders fully visible.
@@ -94,7 +94,7 @@
     for (i = 0; i < ws.length; i++) {                             /* write pass */
       if (top === null || tops[i] - top > 4) { top = tops[i]; line++; k = 0; }
       ws[i].firstChild.style.transitionDelay =
-        ((base || 0) + line * 0.075 + (k++) * 0.022).toFixed(3) + 's';
+        ((base || 0) + line * 0.05 + (k++) * 0.014).toFixed(3) + 's';
     }
     h.classList.add('m-in');
   }
@@ -109,16 +109,70 @@
      fires first silently cancel the others, which showed up as tiles that
      never faded in and one curtain that never opened. */
   var pending = [], wid = 0;
+
+  /* Reveal watchdog. Whatever the normal path is busy with — a stagger queue,
+     a curtain still waiting on its own observer, an image that hasn't decoded
+     — nothing an eye can see stays hidden more than WATCHDOG ms after it first
+     touches the viewport. Every registered callback is idempotent, so firing
+     early simply wins the race and the normal path becomes a no-op. */
+  var WATCHDOG = 600;
+  function force(n) {
+    if (n.mWatch) { clearTimeout(n.mWatch); n.mWatch = 0; }
+    var f = n.mFires, i;
+    if (f) for (i = 0; i < f.length; i++) f[i](n);
+    /* counter moves once per node however many watchers it carried, so a second
+       force() — a sweep landing on something revealTo() already handled — can
+       never drive it negative */
+    if (n.mPend) {
+      n.mPend = 0;
+      if (!--outstanding && guard) { guard.disconnect(); guard = null; }
+    }
+  }
+  var guard = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var n = e.target;
+      if (guard) guard.unobserve(n);
+      if (n.mWatch || !n.mPend) return;
+      n.mWatch = setTimeout(function () { force(n); }, WATCHDOG);
+    });
+  }, { rootMargin: '0px' });
+
+  var outstanding = 0;
   function enrol(n, fire) {
     (n.mFires || (n.mFires = [])).push(fire);
-    if (!n.mPend) { n.mPend = 1; pending.push(n); }
+    if (!n.mPend) { n.mPend = 1; outstanding++; pending.push(n); if (guard) guard.observe(n); }
   }
+
+  /* Arrival by jump — a hash on load, a hashchange, a bfcache restore. The
+     visitor never scrolled through the content above them, so animating it is
+     pointless and, while it runs, the thing they actually asked for is a ghost.
+     Everything from the top of the document down to just past the fold is shown
+     at once with transitions suppressed for a frame. Rects are read in one pass
+     before any class is written, so this costs a single layout. */
+  function revealTo(limit) {
+    if (!pending.length) return;
+    var list = pending.slice(), hit = [], i, r;
+    var top = W.pageYOffset || 0;
+    for (i = 0; i < list.length; i++) {                 /* ---- read pass ---- */
+      r = list[i].getBoundingClientRect();
+      if (r.top + top <= limit) hit.push(list[i]);
+    }
+    if (!hit.length) return;
+    de.classList.add('mnx');                            /* ---- write pass --- */
+    for (i = 0; i < hit.length; i++) force(hit[i]);
+    pending = pending.filter(function (n) { return n.mPend; });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { de.classList.remove('mnx'); });
+    });
+  }
+  function jumped() { revealTo((W.pageYOffset || 0) + W.innerHeight * 1.25); }
   function watch(list, cb, th) {
     if (!list.length) return;
     var key = 'mF' + (++wid);
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) fire(e.target); });
-    }, { threshold: th || 0, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: th || 0, rootMargin: '0px 0px 10% 0px' });
     function fire(n) { if (n[key]) return; n[key] = 1; io.unobserve(n); cb(n); }
     list.forEach(function (n) { enrol(n, fire); io.observe(n); });
   }
@@ -130,16 +184,16 @@
      So: on scroll-end, anything we can prove we scrolled past is shown at once.
      One rect pass over a shrinking list, only when scrolling has stopped. */
   function sweep() {
-    var out = [], i, j, n, r;
-    for (i = 0; i < pending.length; i++) {
+    var out = [], hit = [], i, j, n, r, vh = W.innerHeight;
+    for (i = 0; i < pending.length; i++) {                /* ---- read pass --- */
       n = pending[i];
       r = n.getBoundingClientRect();
-      if (r.top < 0 && (r.width || r.height)) {
-        for (j = 0; j < n.mFires.length; j++) n.mFires[j](n);
-        n.mPend = 0;
-      } else out.push(n);
+      /* On screen or already behind us. Anything IO handled normally has left
+         this list already, so the only nodes here are ones it missed. */
+      if (r.top < vh && (r.width || r.height)) hit.push(n); else out.push(n);
     }
     pending = out;
+    for (i = 0; i < hit.length; i++) force(hit[i]);       /* ---- write pass -- */
   }
   var sweepT = null;
   W.addEventListener('scroll', function () {
@@ -181,8 +235,12 @@
     /* ------------------------------------------------------------ B1 */
     var hero = D.getElementById('hero');
     var h1 = hero ? hero.querySelector('h1') : null;
+    /* Only the homepage hero is a cinematic video wall. The city pages are
+       ad and search landing pages behind a still image — their first paint has
+       to be readable, so they get an enhancement, never an entrance. */
+    var cine = !!(hero && hero.querySelector('video'));
     var heads = $('.sec-head h2, [data-mline]');
-    if (h1) heads.push(h1);
+    if (h1 && cine) heads.push(h1);
     heads.forEach(prep);
     watch(heads.filter(function (h) { return h !== h1; }), function (h) { play(h, 0); }, 0.25);
 
@@ -216,7 +274,7 @@
       var kids = Array.prototype.slice.call(g.children), n = 0;
       kids.forEach(function (c) {
         if (!c.classList.contains('reveal')) { c.classList.add('reveal'); late.push(c); }
-        c.style.transitionDelay = Math.min(n++ * 60, 480) + 'ms';
+        c.style.transitionDelay = Math.min(n++ * 45, 450) + 'ms';
       });
     });
     watch(late, function (n) { n.classList.add('in'); }, 0.12);
@@ -270,9 +328,17 @@
        Hero timeline: badge .2s → h1 line masks .35s → sub .95s → cta 1.15s
        → trust 1.4s. Above the fold, so it runs off mjs-ready, not an observer. */
     var wrap = h1 ? h1.parentElement : null;
-    if (wrap) {
+    if (wrap && !cine) {
+      /* Static-image hero: everything is legible at first paint and merely
+         settles upward. Nothing here ever sits at opacity 0. */
       wrap.classList.add('mhero');
-      var seq = { badge: 0.2, sub: 0.95, cta: 1.15, trust: 1.4 };
+      Array.prototype.slice.call(wrap.children).forEach(function (c, i) {
+        c.classList.add('mhs');
+        c.style.transitionDelay = (i * 0.05).toFixed(2) + 's';
+      });
+    } else if (wrap) {
+      wrap.classList.add('mhero');
+      var seq = { badge: 0.2, sub: 0.8, cta: 0.95, trust: 1.1 };
       Array.prototype.slice.call(wrap.children).forEach(function (c) {
         if (c === h1) return;
         var d = 0.6, key;
@@ -606,8 +672,8 @@
        Curtain up. When the letterbox plays it *is* the curtain, so the plain
        body fade steps aside; the hero timeline starts while the bars are
        still retracting so the two moves overlap.                           */
-    var wantsBox = !!hero && !location.hash && !store('pp_lbx');
-    function heroIn() { if (h1) play(h1, 0); kick(); }
+    var wantsBox = cine && !location.hash && !store('pp_lbx');
+    function heroIn() { if (h1 && cine) play(h1, 0); kick(); }
 
     if (wantsBox) {
       store('pp_lbx', '1');
@@ -627,9 +693,36 @@
     } else {
       requestAnimationFrame(function () {
         de.classList.add('mjs-ready');
-        if (h1) play(h1, 0.35);
+        if (h1 && cine) play(h1, 0.2);
         kick();
       });
     }
+
+    /* ------------------------------------------------------------ A5
+       Arrival by jump. A hash on load, an in-page hash change, or a back/
+       forward restore all drop the visitor somewhere they never scrolled to;
+       show that screenful outright instead of animating it at them. */
+    if (location.hash) {
+      /* A deep link should land, not tour the page. html{scroll-behavior:smooth}
+         also governs the browser's own hash scroll on load, which animates the
+         entire document past the visitor — on this page that is a 12,000px trip
+         — and leaves the thing they actually asked for ghosted while it runs.
+         Land instantly, reveal, then hand smooth scrolling back for nav clicks. */
+      var tgt = null;
+      try { tgt = D.getElementById(location.hash.slice(1)); } catch (e) { }
+      de.style.scrollBehavior = 'auto';
+      if (tgt) tgt.scrollIntoView();
+      jumped();
+      requestAnimationFrame(jumped);
+      setTimeout(function () {            /* late anchor settle: fonts, images */
+        if (tgt) tgt.scrollIntoView();
+        jumped();
+        de.style.scrollBehavior = '';
+      }, 340);
+    }
+    if ('onscrollend' in W) W.addEventListener('scrollend', sweep);
+    W.addEventListener('hashchange', function () { setTimeout(jumped, 90); });
+    W.addEventListener('popstate', function () { setTimeout(jumped, 90); });
+    W.addEventListener('pageshow', function (e) { if (e.persisted) jumped(); });
   });
 })();
