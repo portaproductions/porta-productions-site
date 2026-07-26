@@ -594,12 +594,16 @@
 
 <!-- HERO -->
 <section id="hero">
-  <video autoplay muted loop playsinline preload="none" poster="https://portaproductions.com/assets/hero-wall-poster.jpg?v=3"
+  <video autoplay muted loop playsinline preload="none"
     data-desktop="https://portaproductions.com/assets/hero-wall.mp4?v=4" data-mobile="https://portaproductions.com/assets/hero-mobile.mp4?v=2"
+    data-poster-desktop="https://portaproductions.com/assets/hero-wall-poster.jpg?v=3"
     data-poster-mobile="https://portaproductions.com/assets/hero-mobile-poster.jpg?v=2"></video>
-  <script>/* pick the phone poster before first paint so the LCP image is the 185KB one */
-  (function(){var v=document.querySelector("#hero video");
-   if(v&&matchMedia("(max-width:760px)").matches)v.poster=v.getAttribute("data-poster-mobile");})();
+  <script>/* Set the poster once, to whichever file the media-scoped preload already
+     fetched. Declaring it in the HTML made the parser pull the 255KB desktop
+     poster on phones too, then wait for the swap before painting. */
+  (function(){var v=document.querySelector("#hero video");if(!v)return;
+   var m=matchMedia("(max-width:760px)").matches;
+   v.poster=v.getAttribute(m?"data-poster-mobile":"data-poster-desktop");})();
   </script>
   <div class="herobg"></div>
   <div class="reveal in">
@@ -814,7 +818,7 @@
       <div style="margin-top:24px;font-family:var(--serif);font-size:19px;color:var(--navy);">Ariel Porta <span style="font-family:var(--sans);font-weight:300;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);">— Founder &amp; Director</span></div>
     </div>
     <div class="reveal d2">
-      <img src="assets/about-ariel.jpg" alt="Ariel Porta, Founder &amp; Director" onload="this.classList.add('loaded')" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;margin-bottom:16px;" width="1000" height="1249">
+      <img src="assets/about-ariel.jpg" alt="Ariel Porta, Founder &amp; Director" onload="this.classList.add('loaded')" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;margin-bottom:16px;" width="1000" height="1249" loading="lazy" decoding="async">
       <div class="stats">
       <div class="stat"><div class="num"><span class="count" data-to="5.0" data-dec="1">5.0</span>★</div><div class="lab">Google Rating</div></div>
       <div class="stat"><div class="num"><span class="count" data-to="24" data-dec="0">24</span>–<span class="count" data-to="72" data-dec="0">72</span>h</div><div class="lab">Typical Turnaround</div></div>
