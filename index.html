@@ -10,7 +10,8 @@
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="https://portaproductions.com/assets/hero-wall-poster.jpg?v=3">
+<link rel="preload" as="image" href="https://portaproductions.com/assets/hero-wall-poster.jpg?v=3" media="(min-width:761px)">
+<link rel="preload" as="image" href="https://portaproductions.com/assets/hero-mobile-poster.jpg?v=2" media="(max-width:760px)">
 <link rel="canonical" href="https://portaproductions.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://portaproductions.com/">
@@ -260,7 +261,9 @@
   }
   window.track=function(name,params){try{if(!/XXXXXXXX/.test(window.GA_ID))gtag('event',name,params||{});}catch(e){}};
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap"></noscript>
 <style>
   :root{
     --navy:#121A25;--navy-2:#0E141C;--navy-3:#090D13;
@@ -591,9 +594,13 @@
 
 <!-- HERO -->
 <section id="hero">
-  <video autoplay muted loop playsinline poster="https://portaproductions.com/assets/hero-wall-poster.jpg?v=3">
-    <source src="https://portaproductions.com/assets/hero-wall.mp4?v=4" type="video/mp4">
-  </video>
+  <video autoplay muted loop playsinline preload="none" poster="https://portaproductions.com/assets/hero-wall-poster.jpg?v=3"
+    data-desktop="https://portaproductions.com/assets/hero-wall.mp4?v=4" data-mobile="https://portaproductions.com/assets/hero-mobile.mp4?v=2"
+    data-poster-mobile="https://portaproductions.com/assets/hero-mobile-poster.jpg?v=2"></video>
+  <script>/* pick the phone poster before first paint so the LCP image is the 185KB one */
+  (function(){var v=document.querySelector("#hero video");
+   if(v&&matchMedia("(max-width:760px)").matches)v.poster=v.getAttribute("data-poster-mobile");})();
+  </script>
   <div class="herobg"></div>
   <div class="reveal in">
     <div class="badge">Concierge Real Estate &amp; Brand Media · Dallas–Fort Worth</div>
@@ -951,15 +958,24 @@
 </div>
 
 <script>
-  // ensure hero video autoplays (muted autoplay can need a nudge)
+  // Hero video. The poster carries the first paint; the video itself is a
+  // decoration, so it must never compete with LCP. Phones get the vertical cut,
+  // desktop the wall — exactly one file is ever requested, and only after the
+  // page has finished loading everything that matters.
   (function(){var hv=document.querySelector('#hero video');if(!hv)return;
-    var B='https://portaproductions.com/assets/';
-    if(window.matchMedia('(max-width:760px)').matches){ // phones: single vertical reel fills the screen
-      hv.poster=B+'hero-mobile-poster.jpg?v=2'; hv.src=B+'hero-mobile.mp4?v=2'; hv.load();
+    var phone=window.matchMedia('(max-width:760px)').matches;
+    var src=hv.getAttribute(phone?'data-mobile':'data-desktop');
+    hv.muted=true;
+    function go(){var p=hv.play();if(p&&p.catch)p.catch(function(){});}
+    function start(){
+      if(hv.src)return;
+      hv.src=src; hv.load(); go();
+      document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
+      ['touchstart','click'].forEach(function(e){document.addEventListener(e,go,{once:true,passive:true});});
     }
-    hv.muted=true;function go(){var p=hv.play();if(p&&p.catch)p.catch(function(){});}go();
-    document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
-    ['touchstart','click'].forEach(function(e){document.addEventListener(e,go,{once:true,passive:true});});
+    // after load, and on an idle beat, so a slow connection finishes the page first
+    if(document.readyState==='complete')setTimeout(start,200);
+    else window.addEventListener('load',function(){setTimeout(start,200);});
   })();
 
   // mobile menu
