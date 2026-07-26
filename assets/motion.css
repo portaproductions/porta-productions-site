@@ -160,7 +160,7 @@ html.mjs.mnx #hero .mhi,html.mjs.mnx #hero .mhs{
   border-color:var(--accent,#9AA0A7);box-shadow:0 0 0 1px rgba(154,160,167,.35);background:rgba(255,255,255,.05);}
 
 /* F4 · 404 letter-spacing drift */
-.mjs [data-mdrift]{animation:mdrift 9s ease-in-out infinite alternate;}
+.mjs [data-mdrift]{animation:mdrift 9s ease-in-out 1 forwards;}
 @keyframes mdrift{from{letter-spacing:.06em;}to{letter-spacing:.13em;}}
 
 

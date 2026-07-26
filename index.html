@@ -250,7 +250,6 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://i.ytimg.com">
 <!-- Google Analytics 4 — 'Porta Productions Website' stream (property: Porta Properties). -->
 <script>
   window.GA_ID='G-FR7EHQE53F';
@@ -432,9 +431,9 @@
   @media(max-width:980px){.gal{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.gal{grid-template-columns:1fr;}}
   .tile{position:relative;aspect-ratio:4/3;overflow:hidden;background:#16202C;border:1px solid var(--line);cursor:zoom-in;}
-  .tile::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.045) 50%,transparent 70%) #16202C;background-size:220% 100%;animation:shimmer 1.6s linear infinite;}
+  .tile::before{content:"";position:absolute;top:0;bottom:0;left:-70%;width:70%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.045),transparent);animation:shimmer 1.6s linear infinite;will-change:transform;}
   .tile:has(img.loaded)::before{animation:none;opacity:0;}
-  @keyframes shimmer{from{background-position:130% 0;}to{background-position:-90% 0;}}
+  @keyframes shimmer{to{transform:translateX(343%);}}
   .tile img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .6s;opacity:0;}
   .tile img.loaded{opacity:1;}
   .tile:hover img{transform:scale(1.07);}
@@ -576,7 +575,7 @@
   .lb .lb-next{right:14px;top:50%;transform:translateY(-50%);}
   @media(max-width:620px){.lb .lb-prev{left:6px;}.lb .lb-next{right:6px;}}
 </style>
-<link rel="stylesheet" href="/assets/motion.css?v=4">
+<link rel="stylesheet" href="/assets/motion.css?v=5">
 </head>
 <body id="top">
 
@@ -743,12 +742,12 @@
 
   <div id="films" class="films">
     <div class="ytlite r169 reveal" data-id="dPvpCMJWE8A">
-      <img class="yt-thumb" src="https://i.ytimg.com/vi/dPvpCMJWE8A/maxresdefault.jpg" alt="Featured film — New Leaf Custom Home luxury estate" loading="lazy" decoding="async">
+      <img class="yt-thumb" src="assets/films/thumb-dPvpCMJWE8A.webp" alt="Featured film — New Leaf Custom Home luxury estate" loading="lazy" decoding="async">
       <div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Featured Film · Luxury Estate</div><div class="t">New Leaf Custom Home</div></div>
     </div>
     <div class="ytlite r169 reveal d2" data-id="-PvukHfp5Hk">
-      <img class="yt-thumb" src="https://i.ytimg.com/vi/-PvukHfp5Hk/maxresdefault.jpg" alt="Agent brand film — Connie Segovia" loading="lazy" decoding="async">
+      <img class="yt-thumb" src="assets/films/thumb--PvukHfp5Hk.webp" alt="Agent brand film — Connie Segovia" loading="lazy" decoding="async">
       <div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Agent Brand Film</div><div class="t">Connie Segovia · Real Estate</div></div>
     </div>
@@ -761,17 +760,17 @@
 
   <div class="reels reveal d1">
     <div class="ytlite r916" data-id="KijvNpvXkVo" data-mp4="assets/reels/reel-1.mp4">
-      <img class="yt-thumb" src="https://i.ytimg.com/vi/KijvNpvXkVo/maxresdefault.jpg" alt="Penthouse listing reel — Angel Wright" loading="lazy" decoding="async">
+      <img class="yt-thumb" src="assets/films/thumb-KijvNpvXkVo.webp" alt="Penthouse listing reel — Angel Wright" loading="lazy" decoding="async">
       <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Penthouse</div><div class="t" style="font-size:14px;">Angel Wright</div></div>
     </div>
     <div class="ytlite r916" data-id="yJ6qJhpGeGM" data-mp4="assets/reels/reel-2.mp4">
-      <img class="yt-thumb" src="https://i.ytimg.com/vi/yJ6qJhpGeGM/maxresdefault.jpg" alt="Listing reel — Connie Segovia" loading="lazy" decoding="async">
+      <img class="yt-thumb" src="assets/films/thumb-yJ6qJhpGeGM.webp" alt="Listing reel — Connie Segovia" loading="lazy" decoding="async">
       <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Connie Segovia</div></div>
     </div>
     <div class="ytlite r916" data-id="YLHh6l5yHaU" data-mp4="assets/reels/reel-3.mp4">
-      <img class="yt-thumb" src="https://i.ytimg.com/vi/YLHh6l5yHaU/maxresdefault.jpg" alt="Listing reel — Rockdale Residence" loading="lazy" decoding="async">
+      <img class="yt-thumb" src="assets/films/thumb-YLHh6l5yHaU.webp" alt="Listing reel — Rockdale Residence" loading="lazy" decoding="async">
       <div class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap"><div class="s">Listing Reel</div><div class="t" style="font-size:14px;">Rockdale Residence</div></div>
     </div>
