@@ -2,3 +2,29 @@
 # Static site — no build step needed; publish the repo root.
 [build]
   publish = "."
+
+# Canonical host: send the short vanity domain to portaproductions.com
+# so all SEO signals consolidate on one hostname.
+[[redirects]]
+  from = "https://porta.productions/*"
+  to = "https://portaproductions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://porta.productions/*"
+  to = "https://portaproductions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.porta.productions/*"
+  to = "https://portaproductions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.porta.productions/*"
+  to = "https://portaproductions.com/:splat"
+  status = 301
+  force = true
